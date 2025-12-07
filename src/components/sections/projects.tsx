@@ -47,7 +47,7 @@ export function Projects() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-foreground">Selected <br /> <span className="text-zinc-400 dark:text-white/40">Works</span></h2>
+                        <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-foreground">Selected <span className="text-zinc-400 dark:text-white/40">Works</span></h2>
                     </motion.div>
 
                     <motion.div
