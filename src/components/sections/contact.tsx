@@ -63,10 +63,10 @@ export function Contact() {
 
                         {/* Social Links Row */}
                         <div className="flex gap-4">
-                            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 p-5 rounded-3xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all font-medium text-sm border border-zinc-200 dark:border-white/5 hover:border-black dark:hover:border-white/50">
+                            <a href="https://www.linkedin.com/in/bala-krishnan-m-534149116" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 p-5 rounded-3xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all font-medium text-sm border border-zinc-200 dark:border-white/5 hover:border-black dark:hover:border-white/50">
                                 <Linkedin size={20} /> LinkedIn
                             </a>
-                            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 p-5 rounded-3xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all font-medium text-sm border border-zinc-200 dark:border-white/5 hover:border-black dark:hover:border-white/50">
+                            <a href="https://github.com/balaxbkm" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 p-5 rounded-3xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all font-medium text-sm border border-zinc-200 dark:border-white/5 hover:border-black dark:hover:border-white/50">
                                 <Github size={20} /> Github
                             </a>
                             <a href="https://wa.me/918015528885" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 p-5 rounded-3xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all font-medium text-sm border border-zinc-200 dark:border-white/5 hover:border-black dark:hover:border-white/50">

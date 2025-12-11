@@ -78,14 +78,14 @@ export function Navbar() {
 
                 <div className="hidden md:flex items-center gap-6">
                     <ThemeToggle />
-                    <a
+                    {/* <a
                         href="/resume.pdf"
                         download="Balakrishnan_Resume.pdf"
                         className="px-6 py-2 rounded-full border border-zinc-200 dark:border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all text-sm font-medium flex items-center gap-2 group"
                     >
                         <span>Resume</span>
                         <Download size={16} className="group-hover:translate-y-0.5 transition-transform" />
-                    </a>
+                    </a> */}
                 </div>
 
                 {/* Mobile Nav Toggle */}
