@@ -5,29 +5,29 @@ import { Layout, Server, Database, Wrench } from "lucide-react"
 const techStack = [
     {
         title: "Frontend",
-        icon: <Layout className="w-5 h-5" />,
+        icon: <Layout className="w-5 h-5 text-blue-500" />,
         items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vite", "HTML5", "CSS3", "Flutter"]
     },
     {
         title: "Backend",
-        icon: <Server className="w-5 h-5" />,
+        icon: <Server className="w-5 h-5 text-green-500" />,
         items: ["Python", "FastAPI", "PHP", "Laravel", "CodeIgniter", "Node.js", "REST APIs"]
     },
     {
         title: "Database & Cloud",
-        icon: <Database className="w-5 h-5" />,
+        icon: <Database className="w-5 h-5 text-orange-500" />,
         items: ["MySQL", "MongoDB", "Vercel", "Git", "Google Cloud", "Firebase"]
     },
     {
         title: "Tools & Integrations",
-        icon: <Wrench className="w-5 h-5" />,
+        icon: <Wrench className="w-5 h-5 text-pink-500" />,
         items: ["Stripe", "PayPal", "Google Maps", "Chart.js", "OpenAI API", "Postman"]
     }
 ]
 
 export function Skills() {
     return (
-        <section id="about" className="py-20 relative">
+        <section id="about" className="pt-32 pb-20 relative">
             {/* Background Elements */}
             <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -z-10" />
 
@@ -82,7 +82,7 @@ export function Skills() {
                                     className="glass-card p-8 rounded-3xl border border-zinc-200 dark:border-white/5 bg-white/50 dark:bg-white/[0.02] hover:bg-white/80 dark:hover:bg-white/[0.04] transition-colors group"
                                 >
                                     <div className="flex items-center gap-3 mb-6 border-b border-zinc-200 dark:border-white/5 pb-4">
-                                        <div className="p-2 rounded-xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-white/70 group-hover:text-black dark:group-hover:text-white group-hover:bg-zinc-200 dark:group-hover:bg-white/10 transition-colors">
+                                        <div className="p-2 rounded-xl bg-zinc-100 dark:bg-white/5 group-hover:bg-zinc-200 dark:group-hover:bg-white/10 transition-colors">
                                             {stack.icon}
                                         </div>
                                         <h3 className="text-xl font-bold text-foreground">{stack.title}</h3>

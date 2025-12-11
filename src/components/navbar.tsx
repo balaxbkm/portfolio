@@ -67,7 +67,7 @@ export function Navbar() {
                             key={link.name}
                             href={link.href}
                             className={`text-sm font-medium transition-colors ${activeSection === link.href.replace("/#", "").replace("#", "") || (link.href === "/#home" && activeSection === "hero") // Assuming Hero section might be id="hero" or "home"
-                                ? "text-foreground"
+                                ? "text-yellow-500 dark:text-yellow-300 font-bold"
                                 : "text-muted-foreground hover:text-foreground"
                                 }`}
                         >

@@ -5,7 +5,7 @@ import { Github, Linkedin, MessageCircle, ArrowRight, Code, Globe, Cpu, Zap, Dat
 
 export function Hero() {
     return (
-        <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-20">
+        <section id="home" className="min-h-screen block md:flex md:flex-col md:justify-center relative overflow-hidden pt-32 md:pt-20">
 
             {/* Creative Background Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -33,7 +33,7 @@ export function Hero() {
             </div>
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
-                <div className="grid lg:grid-cols-12 gap-8 items-center h-full">
+                <div className="grid lg:grid-cols-12 gap-8 items-start md:items-center h-auto md:h-full">
 
                     {/* Left Vertical Text */}
                     <div className="hidden lg:flex lg:col-span-1 flex-col justify-center items-center h-[500px] border-l border-zinc-200 dark:border-white/10 ml-4 relative">
@@ -50,12 +50,12 @@ export function Hero() {
                     </div>
 
                     {/* Center Image & Content */}
-                    <div className="lg:col-span-10 relative flex justify-center items-center">
+                    <div className="lg:col-span-10 relative flex flex-col justify-center items-center">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.8 }}
-                            className="relative w-full max-w-2xl aspect-[4/3]"
+                            className="relative w-full max-w-2xl aspect-[3/3.5] md:aspect-[4/3]"
                         >
                             {/* Main Image */}
                             <div className="absolute inset-0 rounded-3xl overflow-hidden grayscale-0 contrast-100 brightness-110">
@@ -104,7 +104,7 @@ export function Hero() {
 
                             {/* Name Overlay */}
                             {/* Name Overlay */}
-                            <div className="absolute top-[72%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center z-20 pointer-events-none">
+                            <div className="hidden md:flex absolute top-[72%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full justify-center z-20 pointer-events-none">
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
                                     animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
@@ -138,14 +138,20 @@ export function Hero() {
                                 initial={{ y: 50, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 0.5 }}
-                                className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[95%] md:w-auto glass-strong rounded-full p-2 flex items-center justify-between gap-4 z-30 shadow-2xl border border-white/10 backdrop-blur-3xl bg-white/80 dark:bg-black/40"
+                                className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 w-[95%] md:w-auto glass-strong rounded-full p-2 items-center justify-between gap-4 z-30 shadow-2xl border border-white/10 backdrop-blur-3xl bg-white/80 dark:bg-black/40"
                             >
                                 {/* Avatars */}
                                 <div className="flex -space-x-4 ml-1">
                                     {["EP", "SC", "KS", "W3", "+"].map((text, i) => (
                                         <div
                                             key={i}
-                                            className="w-10 h-10 rounded-full border-2 border-[#1a1a1a] bg-gradient-to-br from-zinc-700 to-zinc-900 flex items-center justify-center text-[10px] font-bold text-white/50 shadow-lg transform hover:-translate-y-1 transition-transform cursor-default"
+                                            className={`w-10 h-10 rounded-full border-2 border-[#1a1a1a] flex items-center justify-center text-[10px] font-bold text-white shadow-lg transform hover:-translate-y-1 transition-transform cursor-default
+                                            ${i === 0 ? "bg-gradient-to-br from-orange-400 to-red-600" : ""}
+                                            ${i === 1 ? "bg-gradient-to-br from-blue-400 to-indigo-600" : ""}
+                                            ${i === 2 ? "bg-gradient-to-br from-green-400 to-emerald-600" : ""}
+                                            ${i === 3 ? "bg-gradient-to-br from-purple-400 to-pink-600" : ""}
+                                            ${i === 4 ? "bg-gradient-to-br from-zinc-700 to-zinc-900 !text-white/50" : ""}
+                                            `}
                                         >
                                             {text}
                                         </div>
@@ -155,8 +161,8 @@ export function Hero() {
                                 {/* Text Info */}
                                 <div className="hidden md:block">
                                     <div className="flex items-center gap-2 text-sm leading-tight">
-                                        <span className="font-bold text-foreground text-base">25+</span>
-                                        <span className="font-bold text-foreground text-base">Projects</span>
+                                        <span className="font-bold text-yellow-600 dark:text-yellow-400 text-base">25+</span>
+                                        <span className="font-bold text-yellow-600 dark:text-yellow-400 text-base">Projects</span>
                                     </div>
                                 </div>
 
@@ -174,13 +180,64 @@ export function Hero() {
                                 </div>
                             </motion.div>
                         </motion.div>
+
+                        {/* Mobile Content Below Profile */}
+                        <div className="flex md:hidden flex-col items-center gap-6 mt-8 w-full px-4 mb-8">
+                            {/* Mobile Name */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
+                                className="text-center"
+                            >
+                                <h1 className="text-4xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-zinc-900 to-zinc-500 dark:from-white dark:to-white/40 uppercase drop-shadow-sm">
+                                    BALAKRISHNAN
+                                </h1>
+                                <p className="text-[10px] font-bold tracking-[0.6em] text-zinc-600 dark:text-white/60 mt-3 uppercase text-center mx-auto w-fit border border-zinc-200 dark:border-white/10 rounded-full px-4 py-1.5">
+                                    Web Developer
+                                </p>
+                            </motion.div>
+
+                            {/* Mobile Stats/Card */}
+                            <motion.div
+                                initial={{ y: 20, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ delay: 0.3 }}
+                                className="w-full max-w-sm glass-strong rounded-full p-2 flex items-center justify-between gap-4 shadow-xl border border-zinc-200/50 dark:border-white/10 bg-white/50 dark:bg-black/40 backdrop-blur-xl"
+                            >
+                                <div className="flex -space-x-4 ml-1">
+                                    {["EP", "SC", "KS", "W3", "+"].map((text, i) => (
+                                        <div
+                                            key={i}
+                                            className={`w-10 h-10 rounded-full border-2 border-white dark:border-[#1a1a1a] flex items-center justify-center text-[10px] font-bold text-white shadow-sm
+                                            ${i === 0 ? "bg-gradient-to-br from-orange-400 to-red-600" : ""}
+                                            ${i === 1 ? "bg-gradient-to-br from-blue-400 to-indigo-600" : ""}
+                                            ${i === 2 ? "bg-gradient-to-br from-green-400 to-emerald-600" : ""}
+                                            ${i === 3 ? "bg-gradient-to-br from-purple-400 to-pink-600" : ""}
+                                            ${i === 4 ? "bg-gradient-to-br from-zinc-100 to-zinc-300 dark:from-zinc-700 dark:to-zinc-900 !text-zinc-600 dark:!text-white/50" : ""}
+                                            `}
+                                        >
+                                            {text}
+                                        </div>
+                                    ))}
+                                </div>
+                                <div>
+                                    <a
+                                        href="#projects"
+                                        className="p-3 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-bold hover:opacity-90 transition-all shadow-lg block mr-[5px]"
+                                    >
+                                        <ArrowRight size={16} />
+                                    </a>
+                                </div>
+                            </motion.div>
+                        </div>
                     </div>
 
                     {/* Right Social Icons */}
                     <div className="hidden lg:flex lg:col-span-1 flex-col justify-center items-center gap-8">
-                        <a href="https://github.com/balaxbkm" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-zinc-900 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"><Github size={20} /></a>
-                        <a href="https://www.linkedin.com/in/bala-krishnan-m-534149116" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-zinc-900 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"><Linkedin size={20} /></a>
-                        <a href="https://wa.me/918015528885" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-zinc-900 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"><MessageCircle size={20} /></a>
+                        <a href="https://github.com/balaxbkm" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"><Github size={20} /></a>
+                        <a href="https://www.linkedin.com/in/bala-krishnan-m-534149116" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white transition-all"><Linkedin size={20} /></a>
+                        <a href="https://wa.me/918015528885" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-green-600 dark:text-green-400 hover:bg-green-500 hover:text-white transition-all"><MessageCircle size={20} /></a>
                     </div>
 
                 </div>
@@ -194,9 +251,6 @@ export function Hero() {
                 className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
             >
                 <a href="#about" className="flex flex-col items-center gap-2 pointer-events-auto cursor-pointer group p-2">
-                    <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-muted-foreground group-hover:text-foreground transition-colors">
-                        Scroll
-                    </span>
                     <div className="w-[26px] h-[42px] border-2 border-zinc-300 dark:border-white/20 rounded-full flex justify-center p-1.5 transition-colors group-hover:border-zinc-900 dark:group-hover:border-white/60">
                         <motion.div
                             animate={{

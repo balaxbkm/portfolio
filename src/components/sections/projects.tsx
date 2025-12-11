@@ -9,7 +9,7 @@ const projects = [
         category: "Construction Tech",
         description: "A comprehensive plan estimation tool for house/hotel construction. Users upload detailed construction plan PDFs and receive total estimation amounts in CSV format.",
         tech: ["PDF Parsing", "Data Analysis", "CSV Generation", "Complex Logic"],
-        icon: <Layers className="w-6 h-6" />
+        icon: <Layers className="w-6 h-6 text-orange-500" />
     },
     {
         id: "02",
@@ -17,7 +17,7 @@ const projects = [
         category: "EdTech Platform",
         description: "Educational platform for CPR courses featuring student registration, secure payment integration, online exams, and automated certificate generation.",
         tech: ["LMS", "Stripe Integration", "Auto-Certificate", "MySQL"],
-        icon: <Globe className="w-6 h-6" />
+        icon: <Globe className="w-6 h-6 text-blue-500" />
     },
     {
         id: "03",
@@ -25,7 +25,7 @@ const projects = [
         category: "E-commerce",
         description: "Niche e-commerce platform connecting authentic Kerala products to customers across India. Features robust inventory and logistics management.",
         tech: ["E-commerce", "Inventory System", "Payment Gateway", "Logistics"],
-        icon: <Database className="w-6 h-6" />
+        icon: <Database className="w-6 h-6 text-green-500" />
     },
     {
         id: "04",
@@ -33,13 +33,13 @@ const projects = [
         category: "Productivity Tool",
         description: "Browser-based scheduling tool for finding optimal meeting times. Handles multiple scenarios for clients, coworkers, and friends to save time.",
         tech: ["Scheduling Algorithms", "React", "State Management", "UX Design"],
-        icon: <Code className="w-6 h-6" />
+        icon: <Code className="w-6 h-6 text-purple-500" />
     }
 ]
 
 export function Projects() {
     return (
-        <section id="projects" className="py-32 relative">
+        <section id="projects" className="py-12 md:py-32 relative">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-6">
                     <motion.div
@@ -54,9 +54,8 @@ export function Projects() {
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="hidden md:block"
                     >
-                        <p className="text-muted-foreground max-w-xs text-right">
+                        <p className="text-muted-foreground max-w-xs text-center md:text-right">
                             A showcase of projects that define my journey as a developer.
                         </p>
                     </motion.div>
@@ -77,7 +76,7 @@ export function Projects() {
 
                                 {/* Header */}
                                 <div className="flex justify-between items-start mb-8">
-                                    <div className="p-3 bg-zinc-100 dark:bg-white/5 rounded-2xl text-zinc-900 dark:text-white group-hover:scale-110 transition-transform duration-500">
+                                    <div className="p-3 bg-zinc-100 dark:bg-white/5 rounded-2xl group-hover:scale-110 transition-transform duration-500">
                                         {project.icon}
                                     </div>
                                     <span className="text-4xl font-bold text-zinc-200 dark:text-white/5 group-hover:text-zinc-300 dark:group-hover:text-white/10 transition-colors duration-500 font-mono">
