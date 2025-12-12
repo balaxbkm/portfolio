@@ -67,7 +67,7 @@ export function Navbar() {
                             key={link.name}
                             href={link.href}
                             className={`text-sm font-medium transition-colors ${activeSection === link.href.replace("/#", "").replace("#", "") || (link.href === "/#home" && activeSection === "hero") // Assuming Hero section might be id="hero" or "home"
-                                ? "text-yellow-500 dark:text-yellow-300 font-bold"
+                                ? "text-black dark:text-white font-bold dark:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
                                 : "text-muted-foreground hover:text-foreground"
                                 }`}
                         >
@@ -78,14 +78,15 @@ export function Navbar() {
 
                 <div className="hidden md:flex items-center gap-6">
                     <ThemeToggle />
-                    {/* <a
-                        href="/resume.pdf"
-                        download="Balakrishnan_Resume.pdf"
+                    <a
+                        href="https://drive.google.com/file/d/14pmNZ9Yd9kH6TPtkdvkkYNmaZqbfgw0Q/view"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="px-6 py-2 rounded-full border border-zinc-200 dark:border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all text-sm font-medium flex items-center gap-2 group"
                     >
                         <span>Resume</span>
                         <Download size={16} className="group-hover:translate-y-0.5 transition-transform" />
-                    </a> */}
+                    </a>
                 </div>
 
                 {/* Mobile Nav Toggle */}

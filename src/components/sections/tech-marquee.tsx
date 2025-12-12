@@ -88,15 +88,8 @@ export function TechMarquee() {
     return (
         <section className="py-2 border-y border-zinc-200 dark:border-white/5 bg-zinc-50/50 dark:bg-white/[0.02] overflow-hidden">
             <div className="flex overflow-hidden mask-gradient-x">
-                <motion.div
-                    initial={{ x: 0 }}
-                    animate={{ x: "-100%" }}
-                    transition={{
-                        duration: 150,
-                        repeat: Infinity,
-                        ease: "linear",
-                    }}
-                    className="flex flex-nowrap items-center gap-20 md:gap-36 pr-20 md:pr-36 flex-shrink-0"
+                <div
+                    className="flex flex-none w-max flex-nowrap items-center gap-20 md:gap-36 pr-20 md:pr-36 animate-marquee hover:[animation-play-state:paused]"
                 >
                     {technologies.map((tech, i) => (
                         <div key={i} className="flex items-center gap-2 md:gap-3 group">
@@ -108,16 +101,9 @@ export function TechMarquee() {
                             </span>
                         </div>
                     ))}
-                </motion.div>
-                <motion.div
-                    initial={{ x: 0 }}
-                    animate={{ x: "-100%" }}
-                    transition={{
-                        duration: 450,
-                        repeat: Infinity,
-                        ease: "linear",
-                    }}
-                    className="flex flex-nowrap items-center gap-20 md:gap-36 pr-20 md:pr-36 flex-shrink-0"
+                </div>
+                <div
+                    className="flex flex-none w-max flex-nowrap items-center gap-20 md:gap-36 pr-20 md:pr-36 animate-marquee hover:[animation-play-state:paused]"
                 >
                     {technologies.map((tech, i) => (
                         <div key={`clone-${i}`} className="flex items-center gap-2 md:gap-3 group">
@@ -129,7 +115,7 @@ export function TechMarquee() {
                             </span>
                         </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     )

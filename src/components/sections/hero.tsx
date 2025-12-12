@@ -5,7 +5,7 @@ import { Github, Linkedin, MessageCircle, ArrowRight, Code, Globe, Cpu, Zap, Dat
 
 export function Hero() {
     return (
-        <section id="home" className="min-h-screen block md:flex md:flex-col md:justify-center relative overflow-hidden pt-32 md:pt-20">
+        <section id="home" className="block md:min-h-screen md:flex md:flex-col md:justify-center relative overflow-hidden pt-24 md:pt-20">
 
             {/* Creative Background Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -104,7 +104,7 @@ export function Hero() {
 
                             {/* Name Overlay */}
                             {/* Name Overlay */}
-                            <div className="hidden md:flex absolute top-[72%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full justify-center z-20 pointer-events-none">
+                            <div className="hidden md:flex absolute top-[82%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full justify-center z-20 pointer-events-none">
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
                                     animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
@@ -129,7 +129,7 @@ export function Hero() {
                                         }}
                                         className="text-[10px] md:text-xs font-bold tracking-[0.6em] text-white/80 mt-3 uppercase text-center mx-auto w-fit bg-black/60 border border-white/10 rounded-full px-4 py-1.5 backdrop-blur-3xl"
                                     >
-                                        Web Developer
+                                        Software Engineer
                                     </motion.p>
                                 </motion.div>
                             </div>
@@ -138,19 +138,19 @@ export function Hero() {
                                 initial={{ y: 50, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 0.5 }}
-                                className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 w-[95%] md:w-auto glass-strong rounded-full p-2 items-center justify-between gap-4 z-30 shadow-2xl border border-white/10 backdrop-blur-3xl bg-white/80 dark:bg-black/40"
+                                className="hidden md:flex absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[95%] md:w-auto glass-strong rounded-full p-2 items-center justify-between gap-4 z-30 shadow-2xl border-2 border-black dark:border-white/10 backdrop-blur-3xl bg-white/5 dark:bg-black/10"
                             >
                                 {/* Avatars */}
-                                <div className="flex -space-x-4 ml-1">
+                                <div className="flex -space-x-4 ml-[2px]">
                                     {["EP", "SC", "KS", "W3", "+"].map((text, i) => (
                                         <div
                                             key={i}
                                             className={`w-10 h-10 rounded-full border-2 border-[#1a1a1a] flex items-center justify-center text-[10px] font-bold text-white shadow-lg transform hover:-translate-y-1 transition-transform cursor-default
-                                            ${i === 0 ? "bg-gradient-to-br from-orange-400 to-red-600" : ""}
-                                            ${i === 1 ? "bg-gradient-to-br from-blue-400 to-indigo-600" : ""}
-                                            ${i === 2 ? "bg-gradient-to-br from-green-400 to-emerald-600" : ""}
-                                            ${i === 3 ? "bg-gradient-to-br from-purple-400 to-pink-600" : ""}
-                                            ${i === 4 ? "bg-gradient-to-br from-zinc-700 to-zinc-900 !text-white/50" : ""}
+                                            ${i === 0 ? "bg-gradient-to-br from-zinc-400 to-zinc-500" : ""}
+                                            ${i === 1 ? "bg-gradient-to-br from-zinc-500 to-zinc-600" : ""}
+                                            ${i === 2 ? "bg-gradient-to-br from-zinc-600 to-zinc-700" : ""}
+                                            ${i === 3 ? "bg-gradient-to-br from-zinc-700 to-zinc-800" : ""}
+                                            ${i === 4 ? "bg-gradient-to-br from-zinc-800 to-zinc-900 !text-white/50" : ""}
                                             `}
                                         >
                                             {text}
@@ -161,8 +161,8 @@ export function Hero() {
                                 {/* Text Info */}
                                 <div className="hidden md:block">
                                     <div className="flex items-center gap-2 text-sm leading-tight">
-                                        <span className="font-bold text-yellow-600 dark:text-yellow-400 text-base">25+</span>
-                                        <span className="font-bold text-yellow-600 dark:text-yellow-400 text-base">Projects</span>
+                                        <span className="font-bold text-zinc-900 dark:text-white text-xs">15+</span>
+                                        <span className="font-bold text-zinc-900 dark:text-white text-xs">Projects</span>
                                     </div>
                                 </div>
 
@@ -173,7 +173,7 @@ export function Hero() {
                                 <div>
                                     <a
                                         href="#projects"
-                                        className="p-3 rounded-full bg-white text-black text-xs font-bold hover:bg-gray-200 transition-all shadow-lg hover:shadow-white/20 block mr-[5px]"
+                                        className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-bold hover:opacity-90 transition-all shadow-lg mr-[3px]"
                                     >
                                         <ArrowRight size={16} />
                                     </a>
@@ -182,7 +182,7 @@ export function Hero() {
                         </motion.div>
 
                         {/* Mobile Content Below Profile */}
-                        <div className="flex md:hidden flex-col items-center gap-6 mt-8 w-full px-4 mb-8">
+                        <div className="flex md:hidden flex-col items-center gap-6 mt-6 w-full px-4 mb-16">
                             {/* Mobile Name */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
@@ -194,7 +194,7 @@ export function Hero() {
                                     BALAKRISHNAN
                                 </h1>
                                 <p className="text-[10px] font-bold tracking-[0.6em] text-zinc-600 dark:text-white/60 mt-3 uppercase text-center mx-auto w-fit border border-zinc-200 dark:border-white/10 rounded-full px-4 py-1.5">
-                                    Web Developer
+                                    Software Engineer
                                 </p>
                             </motion.div>
 
@@ -203,28 +203,32 @@ export function Hero() {
                                 initial={{ y: 20, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 0.3 }}
-                                className="w-full max-w-sm glass-strong rounded-full p-2 flex items-center justify-between gap-4 shadow-xl border border-zinc-200/50 dark:border-white/10 bg-white/50 dark:bg-black/40 backdrop-blur-xl"
+                                className="w-full max-w-sm glass-strong rounded-full p-2 flex items-center justify-between gap-4 shadow-xl border-2 border-black dark:border-white/10 bg-white/5 dark:bg-black/10 backdrop-blur-3xl"
                             >
-                                <div className="flex -space-x-4 ml-1">
+                                <div className="flex -space-x-4 ml-[2px]">
                                     {["EP", "SC", "KS", "W3", "+"].map((text, i) => (
                                         <div
                                             key={i}
                                             className={`w-10 h-10 rounded-full border-2 border-white dark:border-[#1a1a1a] flex items-center justify-center text-[10px] font-bold text-white shadow-sm
-                                            ${i === 0 ? "bg-gradient-to-br from-orange-400 to-red-600" : ""}
-                                            ${i === 1 ? "bg-gradient-to-br from-blue-400 to-indigo-600" : ""}
-                                            ${i === 2 ? "bg-gradient-to-br from-green-400 to-emerald-600" : ""}
-                                            ${i === 3 ? "bg-gradient-to-br from-purple-400 to-pink-600" : ""}
-                                            ${i === 4 ? "bg-gradient-to-br from-zinc-100 to-zinc-300 dark:from-zinc-700 dark:to-zinc-900 !text-zinc-600 dark:!text-white/50" : ""}
+                                            ${i === 0 ? "bg-gradient-to-br from-zinc-400 to-zinc-500" : ""}
+                                            ${i === 1 ? "bg-gradient-to-br from-zinc-500 to-zinc-600" : ""}
+                                            ${i === 2 ? "bg-gradient-to-br from-zinc-600 to-zinc-700" : ""}
+                                            ${i === 3 ? "bg-gradient-to-br from-zinc-700 to-zinc-800" : ""}
+                                            ${i === 4 ? "bg-gradient-to-br from-zinc-800 to-zinc-900 !text-white/50" : ""}
                                             `}
                                         >
                                             {text}
                                         </div>
                                     ))}
                                 </div>
+                                <div className="flex items-center gap-2 text-sm leading-tight">
+                                    <span className="font-bold text-zinc-900 dark:text-white text-xs">15+</span>
+                                    <span className="font-bold text-zinc-900 dark:text-white text-xs">Projects</span>
+                                </div>
                                 <div>
                                     <a
                                         href="#projects"
-                                        className="p-3 rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-bold hover:opacity-90 transition-all shadow-lg block mr-[5px]"
+                                        className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-bold hover:opacity-90 transition-all shadow-lg mr-[3px]"
                                     >
                                         <ArrowRight size={16} />
                                     </a>
@@ -244,29 +248,7 @@ export function Hero() {
             </div>
             {/* Scroll Down Indicator */}
             {/* Scroll Down Indicator */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.8 }}
-                className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 pointer-events-none"
-            >
-                <a href="#about" className="flex flex-col items-center gap-2 pointer-events-auto cursor-pointer group p-2">
-                    <div className="w-[26px] h-[42px] border-2 border-zinc-300 dark:border-white/20 rounded-full flex justify-center p-1.5 transition-colors group-hover:border-zinc-900 dark:group-hover:border-white/60">
-                        <motion.div
-                            animate={{
-                                y: [0, 8, 0],
-                                opacity: [1, 0.5, 1]
-                            }}
-                            transition={{
-                                duration: 1.5,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                            }}
-                            className="w-1 h-2 bg-foreground rounded-full"
-                        />
-                    </div>
-                </a>
-            </motion.div>
+
         </section>
     )
 }

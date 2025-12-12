@@ -63,12 +63,12 @@ export function Footer() {
                     >
                         <ArrowUp size={16} />
                     </button>
-                    <h1 className="text-[22vw] leading-[0.8] font-black text-zinc-900/5 dark:text-white/5 text-left whitespace-nowrap select-none pointer-events-none tracking-tighter mix-blend-difference pl-4">
-                        <span className="inline-block text-[0.3em] align-middle mb-8 mr-4 text-zinc-300 dark:text-white/20">●</span>ansverse.xyz
+                    <h1 className="text-[15vw] leading-[0.8] font-black text-zinc-900/5 dark:text-white/5 text-left whitespace-nowrap select-none pointer-events-none tracking-tighter mix-blend-difference pl-4">
+                        ansverse.xyz
                     </h1>
                     <div className="flex flex-col md:flex-row justify-between items-center mt-8 text-[10px] text-zinc-400 dark:text-white/20 uppercase tracking-[0.2em] font-medium gap-4">
                         <p>&copy; {new Date().getFullYear()} EDITION. ALL RIGHTS RESERVED.</p>
-                        <p className="text-zinc-400" suppressHydrationWarning>LOCAL TIME: {time || "Loading..."}</p>
+                        <p className="text-zinc-400" suppressHydrationWarning>{time || "Loading..."}</p>
                     </div>
                 </div>
             </div>

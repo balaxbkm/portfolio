@@ -27,7 +27,7 @@ const techStack = [
 
 export function Skills() {
     return (
-        <section id="about" className="pt-32 pb-20 relative">
+        <section id="about" className="pt-16 md:pt-32 pb-10 md:pb-20 relative">
             {/* Background Elements */}
             <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -z-10" />
 

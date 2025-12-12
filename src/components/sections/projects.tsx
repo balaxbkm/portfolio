@@ -39,7 +39,7 @@ const projects = [
 
 export function Projects() {
     return (
-        <section id="projects" className="py-12 md:py-32 relative">
+        <section id="projects" className="py-6 md:py-32 relative">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-6">
                     <motion.div
