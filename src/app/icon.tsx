@@ -40,7 +40,6 @@ export default function Icon() {
                         width: '100%',
                         height: '100%',
                         objectFit: 'contain',
-                        filter: 'invert(1)',
                     }}
                 />
             </div>

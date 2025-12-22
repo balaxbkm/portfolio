@@ -50,7 +50,7 @@ export function Navbar() {
                             src="/logo-icon.png"
                             alt="Logo"
                             fill
-                            className="object-contain dark:invert"
+                            className="object-contain"
                             priority
                         />
                     </div>
