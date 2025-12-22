@@ -44,10 +44,10 @@ export function Navbar() {
     return (
         <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? "bg-white/80 dark:bg-black/50 backdrop-blur-md border-b border-black/5 dark:border-white/5 py-4" : "bg-transparent py-6"}`}>
             <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
-                <Link href="/" className="flex items-center gap-2 group">
+                <Link href="/" className="flex items-center gap-3 group">
                     <div className="relative w-11 h-11 mt-1">
                         <Image
-                            src="/logo-icon.png"
+                            src="/logo-new.png"
                             alt="Logo"
                             fill
                             className="object-contain"

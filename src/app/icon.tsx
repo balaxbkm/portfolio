@@ -15,7 +15,7 @@ export const contentType = 'image/png'
 // Image generation
 export default function Icon() {
     // Read the logo file
-    const logoPath = join(process.cwd(), 'public', 'logo-icon.png')
+    const logoPath = join(process.cwd(), 'public', 'logo-new.png')
     const logoData = readFileSync(logoPath)
     const base64Logo = `data:image/png;base64,${logoData.toString('base64')}`
 
