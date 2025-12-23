@@ -47,7 +47,7 @@ export function Navbar() {
                 <Link href="/" className="flex items-center gap-3 group">
                     <div className="relative w-11 h-11 mt-1">
                         <Image
-                            src="/logo-new.png"
+                            src="/logo-final.png"
                             alt="Logo"
                             fill
                             className="object-contain"
@@ -56,7 +56,7 @@ export function Navbar() {
                     </div>
                     <div className="flex flex-col leading-none">
                         <span className="text-2xl font-bold tracking-tighter text-foreground group-hover:text-primary transition-colors">BALA</span>
-                        <span className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase group-hover:text-foreground transition-colors">Developer</span>
+                        <span className="text-[10px] tracking-[0.2em] text-[#00c870] uppercase transition-colors">Developer</span>
                     </div>
                 </Link>
 
