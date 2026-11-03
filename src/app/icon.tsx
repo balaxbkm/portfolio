@@ -30,9 +30,10 @@ export default function Icon() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     background: 'transparent',
+                    borderRadius: '50%',
+                    overflow: 'hidden',
                 }}
             >
-                {/* Render the logo with an invert filter to make it white */}
                 <img
                     src={base64Logo}
                     alt="Icon"
@@ -40,6 +41,7 @@ export default function Icon() {
                         width: '100%',
                         height: '100%',
                         objectFit: 'cover',
+                        borderRadius: '50%',
                     }}
                 />
             </div>
