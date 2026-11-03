@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CustomCursor } from "@/components/custom-cursor";
 import { BackgroundCircles } from "@/components/background-circles";
+import { InteractiveNetworkBackground } from "@/components/interactive-network-background";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
@@ -41,6 +42,7 @@ export default function RootLayout({
         >
           <CustomCursor />
           <BackgroundCircles />
+          <InteractiveNetworkBackground />
           <SpeedInsights />
           {children}
         </ThemeProvider>

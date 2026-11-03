@@ -8,7 +8,7 @@ import { Footer } from "@/components/sections/footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-white selection:text-black">
+    <main className="min-h-screen bg-transparent text-foreground selection:bg-white selection:text-black relative z-10">
       <Navbar />
       <Hero />
       <TechMarquee />
