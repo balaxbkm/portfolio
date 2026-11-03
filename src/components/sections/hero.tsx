@@ -2,6 +2,7 @@
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Github, Linkedin, MessageCircle, ArrowRight, Code, Globe, Cpu, Zap, Database, Palette, Layers } from "lucide-react"
+import { track } from "@vercel/analytics"
 
 export function Hero() {
     return (
@@ -202,9 +203,9 @@ export function Hero() {
 
                     {/* Right Social Icons */}
                     <div className="hidden lg:flex lg:col-span-1 flex-col justify-center items-center gap-8">
-                        <a href="https://github.com/balaxbkm" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"><Github size={20} /></a>
-                        <a href="https://www.linkedin.com/in/balakrishnan-m-534149116" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white transition-all"><Linkedin size={20} /></a>
-                        <a href="https://wa.me/918015528885" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-green-600 dark:text-green-400 hover:bg-green-500 hover:text-white transition-all"><MessageCircle size={20} /></a>
+                        <a href="https://github.com/balaxbkm" target="_blank" rel="noopener noreferrer" onClick={() => track("social_click", { platform: "github", location: "hero" })} className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all" aria-label="GitHub"><Github size={20} /></a>
+                        <a href="https://www.linkedin.com/in/balakrishnan-m-534149116" target="_blank" rel="noopener noreferrer" onClick={() => track("social_click", { platform: "linkedin", location: "hero" })} className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white transition-all" aria-label="LinkedIn"><Linkedin size={20} /></a>
+                        <a href="https://wa.me/918015528885" target="_blank" rel="noopener noreferrer" onClick={() => track("contact_click", { channel: "whatsapp", location: "hero" })} className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-green-600 dark:text-green-400 hover:bg-green-500 hover:text-white transition-all" aria-label="WhatsApp"><MessageCircle size={20} /></a>
                     </div>
 
                 </div>

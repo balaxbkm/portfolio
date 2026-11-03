@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import { Menu, X, Download } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { track } from "@vercel/analytics"
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
@@ -81,6 +82,7 @@ export function Navbar() {
                     <a
                         href="/Resume_Balakrishnan_M.pdf"
                         download="Resume_Balakrishnan_M.pdf"
+                        onClick={() => track("resume_download", { location: "navbar" })}
                         className="px-6 py-2 rounded-full border border-zinc-200 dark:border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all text-sm font-medium flex items-center gap-2 group"
                     >
                         <span>Resume</span>
@@ -117,7 +119,10 @@ export function Navbar() {
                         href="/Resume_Balakrishnan_M.pdf"
                         download="Resume_Balakrishnan_M.pdf"
                         className="px-6 py-2 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-all text-sm font-medium flex items-center gap-2 group mt-2"
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => {
+                            setIsOpen(false);
+                            track("resume_download", { location: "mobile_menu" });
+                        }}
                     >
                         <span>Resume</span>
                         <Download size={16} className="group-hover:translate-y-0.5 transition-transform" />

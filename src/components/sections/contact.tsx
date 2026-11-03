@@ -1,6 +1,7 @@
 "use client"
 import { motion } from "framer-motion"
 import { Mail, Phone, MapPin, Linkedin, Github, MessageCircle, ArrowRight } from "lucide-react"
+import { track } from "@vercel/analytics"
 
 export function Contact() {
     return (
@@ -38,7 +39,7 @@ export function Contact() {
                     {/* Left: Contact Info */}
                     <div className="lg:col-span-4 space-y-6">
                         {/* Email Card */}
-                        <a href="mailto:bala13.bkm@gmail.com" className="flex items-center gap-4 md:gap-6 p-4 md:p-6 rounded-2xl md:rounded-3xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 hover:border-zinc-900 dark:hover:border-white/50 transition-all group">
+                        <a href="mailto:bala13.bkm@gmail.com" onClick={() => track("contact_click", { channel: "email", location: "contact" })} className="flex items-center gap-4 md:gap-6 p-4 md:p-6 rounded-2xl md:rounded-3xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 hover:border-zinc-900 dark:hover:border-white/50 transition-all group">
                             <div className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-white dark:bg-white/10 group-hover:scale-110 transition-transform shadow-sm">
                                 <Mail className="w-5 h-5 md:w-6 md:h-6 text-blue-500" />
                             </div>
@@ -50,7 +51,7 @@ export function Contact() {
                         </a>
 
                         {/* Phone Card */}
-                        <a href="tel:+918015528885" className="flex items-center gap-4 md:gap-6 p-4 md:p-6 rounded-2xl md:rounded-3xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 hover:border-zinc-900 dark:hover:border-white/50 transition-all group">
+                        <a href="tel:+918015528885" onClick={() => track("contact_click", { channel: "phone", location: "contact" })} className="flex items-center gap-4 md:gap-6 p-4 md:p-6 rounded-2xl md:rounded-3xl bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 hover:border-zinc-900 dark:hover:border-white/50 transition-all group">
                             <div className="p-3 md:p-4 rounded-xl md:rounded-2xl bg-white dark:bg-white/10 group-hover:scale-110 transition-transform shadow-sm">
                                 <Phone className="w-5 h-5 md:w-6 md:h-6 text-green-500" />
                             </div>
@@ -63,13 +64,13 @@ export function Contact() {
 
                         {/* Social Links Row */}
                         <div className="grid grid-cols-3 gap-2 md:flex md:gap-4">
-                            <a href="https://www.linkedin.com/in/balakrishnan-m-534149116" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-1.5 md:gap-2 p-3 md:p-5 rounded-2xl md:rounded-3xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all font-medium text-[10px] md:text-sm border border-zinc-200 dark:border-white/5 hover:border-black dark:hover:border-white/50 md:flex-1">
+                            <a href="https://www.linkedin.com/in/balakrishnan-m-534149116" target="_blank" rel="noopener noreferrer" onClick={() => track("social_click", { platform: "linkedin", location: "contact" })} className="flex items-center justify-center gap-1.5 md:gap-2 p-3 md:p-5 rounded-2xl md:rounded-3xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all font-medium text-[10px] md:text-sm border border-zinc-200 dark:border-white/5 hover:border-black dark:hover:border-white/50 md:flex-1">
                                 <Linkedin className="w-4 h-4 md:w-5 md:h-5 text-blue-600 dark:text-blue-400 group-hover:text-white dark:group-hover:text-inherit" /> LinkedIn
                             </a>
-                            <a href="https://github.com/balaxbkm" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-1.5 md:gap-2 p-3 md:p-5 rounded-2xl md:rounded-3xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all font-medium text-[10px] md:text-sm border border-zinc-200 dark:border-white/5 hover:border-black dark:hover:border-white/50 md:flex-1">
+                            <a href="https://github.com/balaxbkm" target="_blank" rel="noopener noreferrer" onClick={() => track("social_click", { platform: "github", location: "contact" })} className="flex items-center justify-center gap-1.5 md:gap-2 p-3 md:p-5 rounded-2xl md:rounded-3xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all font-medium text-[10px] md:text-sm border border-zinc-200 dark:border-white/5 hover:border-black dark:hover:border-white/50 md:flex-1">
                                 <Github className="w-4 h-4 md:w-5 md:h-5 text-black dark:text-white group-hover:text-white dark:group-hover:text-black" /> Github
                             </a>
-                            <a href="https://wa.me/918015528885" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-1.5 md:gap-2 p-3 md:p-5 rounded-2xl md:rounded-3xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all font-medium text-[10px] md:text-sm border border-zinc-200 dark:border-white/5 hover:border-black dark:hover:border-white/50 md:flex-1">
+                            <a href="https://wa.me/918015528885" target="_blank" rel="noopener noreferrer" onClick={() => track("contact_click", { channel: "whatsapp", location: "contact" })} className="flex items-center justify-center gap-1.5 md:gap-2 p-3 md:p-5 rounded-2xl md:rounded-3xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all font-medium text-[10px] md:text-sm border border-zinc-200 dark:border-white/5 hover:border-black dark:hover:border-white/50 md:flex-1">
                                 <MessageCircle className="w-4 h-4 md:w-5 md:h-5 text-green-500 group-hover:text-white dark:group-hover:text-inherit" /> WhatsApp
                             </a>
                         </div>
