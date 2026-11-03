@@ -1,27 +1,27 @@
 "use client"
 import { motion } from "framer-motion"
-import { Layout, Server, Database, Wrench } from "lucide-react"
+import { Layout, Server, Database, Sparkles } from "lucide-react"
 
 const techStack = [
     {
-        title: "Frontend",
+        title: "Frontend & Mobile",
         icon: <Layout className="w-5 h-5 text-blue-500" />,
-        items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vite", "HTML5", "CSS3", "Flutter"]
+        items: ["React.js", "Next.js", "TypeScript", "JavaScript (ES6+)", "Tailwind CSS", "HTML5 / CSS3", "Flutter", "Angular", "jQuery"]
     },
     {
-        title: "Backend",
+        title: "Backend & Systems",
         icon: <Server className="w-5 h-5 text-green-500" />,
-        items: ["Python", "FastAPI", "PHP", "Laravel", "CodeIgniter", "Node.js", "REST APIs"]
+        items: ["PHP", "Laravel", "CodeIgniter", "Node.js", "Python", "RESTful API Architecture", "Webhooks", "JSON/XML"]
     },
     {
-        title: "Database & Cloud",
+        title: "AI & Test Automation",
+        icon: <Sparkles className="w-5 h-5 text-purple-500" />,
+        items: ["LLM API Integration (Gemini, Claude, OpenAI)", "Prompt Engineering", "Playwright (E2E Automation)", "Regression Testing", "OCR Pipelines", "Postman API Testing"]
+    },
+    {
+        title: "Databases & Cloud",
         icon: <Database className="w-5 h-5 text-orange-500" />,
-        items: ["MySQL", "MongoDB", "Vercel", "Git", "Google Cloud", "Firebase"]
-    },
-    {
-        title: "Tools & Integrations",
-        icon: <Wrench className="w-5 h-5 text-pink-500" />,
-        items: ["Stripe", "PayPal", "Google Maps", "Chart.js", "OpenAI API", "Postman"]
+        items: ["MySQL", "PostgreSQL", "MongoDB", "Firebase (Firestore / Realtime)", "Git / GitHub", "Stripe & PayPal", "WooCommerce", "Vercel"]
     }
 ]
 
@@ -41,19 +41,21 @@ export function Skills() {
                             <div className="w-20 h-1 bg-zinc-200 dark:bg-white/20 rounded-full" />
                         </div>
 
-                        <p className="text-muted-foreground leading-loose text-lg">
-                            Hello! I'm <span className="text-foreground font-medium">Balakrishnan M</span>, a Senior Full Stack Developer driven by a passion for building scalable, high-performance web applications.
-                            With over <span className="text-foreground font-medium">7 years of experience</span>, I bridge the gap between elegant design and robust engineering, specializing in the modern JavaScript ecosystem, Python, and PHP.
+                        <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
+                            Hello! I'm <span className="text-foreground font-semibold">Balakrishnan M</span>, a Senior Full-Stack Software Engineer with <span className="text-foreground font-semibold">8+ years of experience</span> architecting, developing, and deploying robust web applications, RESTful APIs, and scalable backend systems.
+                        </p>
+                        <p className="text-muted-foreground leading-relaxed text-base">
+                            Specializing in <span className="text-foreground font-medium">PHP (Laravel, CodeIgniter)</span>, <span className="text-foreground font-medium">modern JavaScript/TypeScript (React, Next.js, Node.js)</span>, and database optimization. Experienced in integrating intelligent AI workflows (LLM APIs, prompt engineering) and implementing end-to-end automation testing with Playwright to ensure high code quality, system resilience, and continuous delivery across enterprise platforms.
                         </p>
 
                         <div className="grid grid-cols-2 gap-y-6 text-sm">
                             <div>
                                 <p className="text-muted-foreground mb-1">Location</p>
-                                <p className="font-medium text-foreground">Tenkasi, India</p>
+                                <p className="font-medium text-foreground">Sengottai, Tamil Nadu, India</p>
                             </div>
                             <div>
                                 <p className="text-muted-foreground mb-1">Experience</p>
-                                <p className="font-medium text-foreground">7+ Years</p>
+                                <p className="font-medium text-foreground">8+ Years</p>
                             </div>
                             <div>
                                 <p className="text-muted-foreground mb-1">Availability</p>

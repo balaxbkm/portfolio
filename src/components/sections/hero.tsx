@@ -5,7 +5,7 @@ import { Github, Linkedin, MessageCircle, ArrowRight, Code, Globe, Cpu, Zap, Dat
 
 export function Hero() {
     return (
-        <section id="home" className="block md:min-h-screen md:flex md:flex-col md:justify-center relative overflow-hidden pt-24 md:pt-20">
+        <section id="home" className="block md:min-h-screen md:flex md:flex-col md:justify-center relative overflow-hidden pt-36 sm:pt-40 md:pt-20 pb-16 md:pb-0">
 
             {/* Creative Background Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -55,18 +55,19 @@ export function Hero() {
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.8 }}
-                            className="relative w-full max-w-2xl aspect-[3/3.5] md:aspect-[4/3]"
+                            style={{ aspectRatio: "3 / 2" }}
+                            className="relative w-full max-w-2xl aspect-[3/2]"
                         >
                             {/* Main Image */}
-                            <div className="absolute inset-0 rounded-3xl overflow-hidden grayscale-0 contrast-100 brightness-110">
+                            <div className="absolute inset-0 rounded-3xl overflow-hidden grayscale-0 contrast-100 brightness-100">
                                 <Image
-                                    src="/profile-new-2.jpg"
+                                    src="/profile.jpg"
                                     alt="Balakrishnan M"
                                     fill
                                     className="object-cover"
                                     priority
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-80" />
+
                             </div>
 
                             {/* Floating Icons Around Profile */}
@@ -77,40 +78,38 @@ export function Hero() {
                             <motion.div
                                 animate={{ y: [0, -15, 0], x: [0, 10, 0] }}
                                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                                className="absolute top-[20%] -right-[8%] p-3 rounded-xl bg-white/40 dark:bg-black/40 backdrop-blur-xl border border-white/30 dark:border-white/10 shadow-lg z-20"
+                                className="absolute top-[18%] right-1 sm:-right-[4%] md:-right-[8%] p-2 sm:p-3 rounded-xl bg-white/40 dark:bg-black/40 backdrop-blur-xl border border-white/30 dark:border-white/10 shadow-lg z-20"
                             >
-                                <Cpu className="text-emerald-600 dark:text-emerald-400 w-5 h-5" />
+                                <Cpu className="text-emerald-600 dark:text-emerald-400 w-4 h-4 sm:w-5 sm:h-5" />
                             </motion.div>
-
-
 
                             <motion.div
                                 animate={{ y: [0, -10, 0], x: [0, -5, 0], rotate: [0, 10, 0] }}
                                 transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                                className="absolute -top-[5%] left-[10%] p-3 rounded-2xl bg-white/40 dark:bg-black/40 backdrop-blur-xl border border-white/30 dark:border-white/10 shadow-lg z-20"
+                                className="absolute -top-3 sm:-top-[5%] left-[6%] sm:left-[10%] p-2 sm:p-3 rounded-2xl bg-white/40 dark:bg-black/40 backdrop-blur-xl border border-white/30 dark:border-white/10 shadow-lg z-20"
                             >
-                                <Database className="text-pink-600 dark:text-pink-400 w-6 h-6" />
+                                <Database className="text-pink-600 dark:text-pink-400 w-4 h-4 sm:w-6 sm:h-6" />
                             </motion.div>
 
                             <motion.div
                                 animate={{ y: [0, 15, 0], rotate: [0, -5, 0] }}
                                 transition={{ duration: 8.5, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
-                                className="absolute bottom-[25%] -left-[8%] p-4 rounded-full bg-white/40 dark:bg-black/40 backdrop-blur-xl border border-white/30 dark:border-white/10 shadow-lg z-20"
+                                className="absolute bottom-[28%] left-1 sm:-left-[4%] md:-left-[8%] p-2 sm:p-4 rounded-full bg-white/40 dark:bg-black/40 backdrop-blur-xl border border-white/30 dark:border-white/10 shadow-lg z-20"
                             >
-                                <Palette className="text-violet-600 dark:text-violet-400 w-6 h-6" />
+                                <Palette className="text-violet-600 dark:text-violet-400 w-4 h-4 sm:w-6 sm:h-6" />
                             </motion.div>
 
 
 
-                            {/* Name Overlay */}
-                            {/* Name Overlay */}
-                            <div className="hidden md:flex absolute top-[82%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full justify-center z-20 pointer-events-none">
+                            {/* Name Overlay - Unified for all screen sizes */}
+                            <div className="hidden md:flex absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full justify-center z-20 pointer-events-none px-4">
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
                                     animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                                     transition={{ duration: 0.8 }}
+                                    className="text-center"
                                 >
-                                    <h1 className="text-3xl md:text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/40 uppercase drop-shadow-2xl filter drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+                                    <h1 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/70 uppercase filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] drop-shadow-[0_4px_16px_rgba(0,0,0,0.65)]">
                                         BALAKRISHNAN
                                     </h1>
                                     <motion.p
@@ -127,25 +126,26 @@ export function Hero() {
                                             boxShadow: { duration: 3, repeat: Infinity, ease: "easeInOut" },
                                             borderColor: { duration: 3, repeat: Infinity, ease: "easeInOut" }
                                         }}
-                                        className="text-[10px] md:text-xs font-bold tracking-[0.6em] text-white/80 mt-3 uppercase text-center mx-auto w-fit bg-black/60 border border-white/10 rounded-full px-4 py-1.5 backdrop-blur-3xl"
+                                        className="text-[9px] sm:text-[10px] md:text-xs font-bold tracking-[0.35em] sm:tracking-[0.6em] text-white/80 mt-1.5 sm:mt-2 md:mt-3 uppercase text-center mx-auto w-fit bg-black/60 border border-white/10 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 backdrop-blur-3xl"
                                     >
-                                        Software Engineer
+                                        Senior Software Engineer
                                     </motion.p>
                                 </motion.div>
                             </div>
-                            {/* Glass Card Overlay */}
+
+                            {/* Glass Card Overlay - Unified for all screen sizes */}
                             <motion.div
                                 initial={{ y: 50, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 0.5 }}
-                                className="hidden md:flex absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[95%] md:w-auto glass-strong rounded-full p-2 items-center justify-between gap-4 z-30 shadow-2xl border-2 border-black dark:border-white/10 backdrop-blur-3xl bg-white/5 dark:bg-black/10"
+                                className="flex absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-auto max-w-[95%] glass-strong rounded-full p-1.5 sm:p-2 items-center justify-between gap-2.5 sm:gap-4 z-30 shadow-2xl border-2 border-black dark:border-white/10 backdrop-blur-3xl bg-white/5 dark:bg-black/10"
                             >
                                 {/* Avatars */}
-                                <div className="flex -space-x-4 ml-[2px]">
+                                <div className="flex -space-x-3 sm:-space-x-4 ml-[2px]">
                                     {["EP", "SC", "KS", "W3", "+"].map((text, i) => (
                                         <div
                                             key={i}
-                                            className={`w-10 h-10 rounded-full border-2 border-[#1a1a1a] flex items-center justify-center text-[10px] font-bold text-white shadow-lg transform hover:-translate-y-1 transition-transform cursor-default
+                                            className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-[#1a1a1a] flex items-center justify-center text-[8px] sm:text-[10px] font-bold text-white shadow-lg transform hover:-translate-y-1 transition-transform cursor-default
                                             ${i === 0 ? "bg-gradient-to-br from-zinc-400 to-zinc-500" : ""}
                                             ${i === 1 ? "bg-gradient-to-br from-zinc-500 to-zinc-600" : ""}
                                             ${i === 2 ? "bg-gradient-to-br from-zinc-600 to-zinc-700" : ""}
@@ -159,80 +159,43 @@ export function Hero() {
                                 </div>
 
                                 {/* Text Info */}
-                                <div className="hidden md:block">
-                                    <div className="flex items-center gap-2 text-sm leading-tight">
-                                        <span className="font-bold text-zinc-900 dark:text-white text-xs">15+</span>
-                                        <span className="font-bold text-zinc-900 dark:text-white text-xs">Projects</span>
+                                <div className="block">
+                                    <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm leading-tight">
+                                        <span className="font-bold text-zinc-900 dark:text-white text-[11px] sm:text-xs">20+</span>
+                                        <span className="font-bold text-zinc-900 dark:text-white text-[11px] sm:text-xs">Projects</span>
                                     </div>
                                 </div>
 
                                 {/* Divider */}
-                                <div className="w-px h-8 bg-white/10 hidden md:block" />
+                                <div className="w-px h-6 sm:h-8 bg-zinc-300 dark:bg-white/10 block" />
 
                                 {/* Button */}
                                 <div>
                                     <a
                                         href="#projects"
-                                        className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-bold hover:opacity-90 transition-all shadow-lg mr-[3px]"
+                                        className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-bold hover:opacity-90 transition-all shadow-lg mr-[2px]"
                                     >
-                                        <ArrowRight size={16} />
+                                        <ArrowRight size={14} className="sm:hidden" />
+                                        <ArrowRight size={16} className="hidden sm:block" />
                                     </a>
                                 </div>
                             </motion.div>
                         </motion.div>
 
-                        {/* Mobile Content Below Profile */}
-                        <div className="flex md:hidden flex-col items-center gap-6 mt-6 w-full px-4 mb-16">
-                            {/* Mobile Name */}
+                        {/* Mobile Name & Designation Below Profile Photo */}
+                        <div className="flex md:hidden flex-col items-center text-center mt-10 w-full px-4 mb-4">
                             <motion.div
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2 }}
+                                transition={{ duration: 0.6, delay: 0.2 }}
                                 className="text-center"
                             >
-                                <h1 className="text-4xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-zinc-900 to-zinc-500 dark:from-white dark:to-white/40 uppercase drop-shadow-sm">
+                                <h1 className="text-3xl sm:text-4xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-zinc-900 to-zinc-600 dark:from-white dark:to-white/60 uppercase">
                                     BALAKRISHNAN
                                 </h1>
-                                <p className="text-[10px] font-bold tracking-[0.6em] text-zinc-600 dark:text-white/60 mt-3 uppercase text-center mx-auto w-fit border border-zinc-200 dark:border-white/10 rounded-full px-4 py-1.5">
-                                    Software Engineer
+                                <p className="text-[10px] sm:text-xs font-bold tracking-[0.4em] text-zinc-600 dark:text-white/70 mt-2 uppercase text-center mx-auto w-fit bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-full px-4 py-1.5 shadow-sm">
+                                    Senior Software Engineer
                                 </p>
-                            </motion.div>
-
-                            {/* Mobile Stats/Card */}
-                            <motion.div
-                                initial={{ y: 20, opacity: 0 }}
-                                animate={{ y: 0, opacity: 1 }}
-                                transition={{ delay: 0.3 }}
-                                className="w-full max-w-sm glass-strong rounded-full p-2 flex items-center justify-between gap-4 shadow-xl border-2 border-black dark:border-white/10 bg-white/5 dark:bg-black/10 backdrop-blur-3xl"
-                            >
-                                <div className="flex -space-x-4 ml-[2px]">
-                                    {["EP", "SC", "KS", "W3", "+"].map((text, i) => (
-                                        <div
-                                            key={i}
-                                            className={`w-10 h-10 rounded-full border-2 border-white dark:border-[#1a1a1a] flex items-center justify-center text-[10px] font-bold text-white shadow-sm
-                                            ${i === 0 ? "bg-gradient-to-br from-zinc-400 to-zinc-500" : ""}
-                                            ${i === 1 ? "bg-gradient-to-br from-zinc-500 to-zinc-600" : ""}
-                                            ${i === 2 ? "bg-gradient-to-br from-zinc-600 to-zinc-700" : ""}
-                                            ${i === 3 ? "bg-gradient-to-br from-zinc-700 to-zinc-800" : ""}
-                                            ${i === 4 ? "bg-gradient-to-br from-zinc-800 to-zinc-900 !text-white/50" : ""}
-                                            `}
-                                        >
-                                            {text}
-                                        </div>
-                                    ))}
-                                </div>
-                                <div className="flex items-center gap-2 text-sm leading-tight">
-                                    <span className="font-bold text-zinc-900 dark:text-white text-xs">15+</span>
-                                    <span className="font-bold text-zinc-900 dark:text-white text-xs">Projects</span>
-                                </div>
-                                <div>
-                                    <a
-                                        href="#projects"
-                                        className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-bold hover:opacity-90 transition-all shadow-lg mr-[3px]"
-                                    >
-                                        <ArrowRight size={16} />
-                                    </a>
-                                </div>
                             </motion.div>
                         </div>
                     </div>
@@ -240,7 +203,7 @@ export function Hero() {
                     {/* Right Social Icons */}
                     <div className="hidden lg:flex lg:col-span-1 flex-col justify-center items-center gap-8">
                         <a href="https://github.com/balaxbkm" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"><Github size={20} /></a>
-                        <a href="https://www.linkedin.com/in/bala-krishnan-m-534149116" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white transition-all"><Linkedin size={20} /></a>
+                        <a href="https://www.linkedin.com/in/balakrishnan-m-534149116" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white transition-all"><Linkedin size={20} /></a>
                         <a href="https://wa.me/918015528885" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-zinc-100 dark:bg-white/5 text-green-600 dark:text-green-400 hover:bg-green-500 hover:text-white transition-all"><MessageCircle size={20} /></a>
                     </div>
 

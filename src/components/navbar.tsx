@@ -45,12 +45,12 @@ export function Navbar() {
         <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? "bg-white/80 dark:bg-black/50 backdrop-blur-md border-b border-black/5 dark:border-white/5 py-4" : "bg-transparent py-6"}`}>
             <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
                 <Link href="/" className="flex items-center gap-3 group">
-                    <div className="relative w-11 h-11 mt-1">
+                    <div className="relative w-11 h-11 mt-1 rounded-full overflow-hidden">
                         <Image
-                            src="/logo-final.png"
+                            src="/logo-photo.jpg"
                             alt="Logo"
                             fill
-                            className="object-contain"
+                            className="object-cover"
                             priority
                         />
                     </div>
@@ -79,9 +79,8 @@ export function Navbar() {
                 <div className="hidden md:flex items-center gap-6">
                     <ThemeToggle />
                     <a
-                        href="https://drive.google.com/file/d/14pmNZ9Yd9kH6TPtkdvkkYNmaZqbfgw0Q/view"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="/Resume_Balakrishnan_M.pdf"
+                        download="Resume_Balakrishnan_M.pdf"
                         className="px-6 py-2 rounded-full border border-zinc-200 dark:border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all text-sm font-medium flex items-center gap-2 group"
                     >
                         <span>Resume</span>
@@ -114,6 +113,15 @@ export function Navbar() {
                             {link.name}
                         </Link>
                     ))}
+                    <a
+                        href="/Resume_Balakrishnan_M.pdf"
+                        download="Resume_Balakrishnan_M.pdf"
+                        className="px-6 py-2 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-all text-sm font-medium flex items-center gap-2 group mt-2"
+                        onClick={() => setIsOpen(false)}
+                    >
+                        <span>Resume</span>
+                        <Download size={16} className="group-hover:translate-y-0.5 transition-transform" />
+                    </a>
                 </div>
             )}
         </nav>

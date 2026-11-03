@@ -17,9 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Balakrishnan M | Senior Web Developer",
-  description: "Portfolio of Balakrishnan M (Bala), a Senior Web Developer with 6+ years of experience in Next.js, React, PHP, Python, and more.",
-  keywords: ["Web Developer", "Next.js", "React", "PHP", "Python", "Portfolio", "Balakrishnan M", "Bala"],
+  title: "Balakrishnan M | Senior Software Engineer",
+  description: "Portfolio of Balakrishnan M, a Senior Software Engineer with 8+ years of experience in PHP (Laravel, CodeIgniter), React, Next.js, Node.js, AI workflows, and Playwright automation.",
+  keywords: ["Senior Software Engineer", "Full Stack Developer", "Laravel", "CodeIgniter", "Next.js", "React", "Node.js", "Playwright", "LLM Integration", "Balakrishnan M", "Bala"],
 };
 
 export default function RootLayout({

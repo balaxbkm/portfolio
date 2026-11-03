@@ -15,9 +15,9 @@ export const contentType = 'image/png'
 // Image generation
 export default function Icon() {
     // Read the logo file
-    const logoPath = join(process.cwd(), 'public', 'logo-final.png')
+    const logoPath = join(process.cwd(), 'public', 'logo-photo.jpg')
     const logoData = readFileSync(logoPath)
-    const base64Logo = `data:image/png;base64,${logoData.toString('base64')}`
+    const base64Logo = `data:image/jpeg;base64,${logoData.toString('base64')}`
 
     return new ImageResponse(
         (
@@ -39,7 +39,7 @@ export default function Icon() {
                     style={{
                         width: '100%',
                         height: '100%',
-                        objectFit: 'contain',
+                        objectFit: 'cover',
                     }}
                 />
             </div>
