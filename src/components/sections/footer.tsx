@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react"
-import { ArrowUp, Heart, Sparkles } from "lucide-react"
+import { ArrowUp } from "lucide-react"
 
 export function Footer() {
     const [time, setTime] = useState<string>("")
@@ -37,10 +37,10 @@ export function Footer() {
         <footer className="pt-16 pb-10 bg-zinc-50 dark:bg-black/80 border-t border-zinc-200/80 dark:border-white/10 relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-6 relative z-10">
 
-                {/* Top Row: Navigation Links & Scroll-to-Top */}
-                <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-zinc-200/80 dark:border-white/10">
-                    <div>
-                        <div className="flex items-center gap-2 mb-2">
+                {/* Top Row: Info & Scroll-to-Top */}
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-12 border-b border-zinc-200/80 dark:border-white/10">
+                    <div className="text-center sm:text-left">
+                        <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
                             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                             <span className="text-xs font-mono font-semibold text-emerald-600 dark:text-emerald-400 tracking-wide uppercase">
                                 Open to Work
@@ -50,17 +50,8 @@ export function Footer() {
                             Balakrishnan M
                         </h3>
                         <p className="text-xs text-muted-foreground mt-0.5">
-                            Senior Full-Stack Software Engineer · <span className="font-semibold text-foreground">ansverse.xyz</span>
+                            Senior Full-Stack Software Engineer
                         </p>
-                    </div>
-
-                    {/* Nav Links */}
-                    <div className="flex flex-wrap items-center justify-center gap-6 text-xs font-medium text-muted-foreground">
-                        <a href="#about" className="hover:text-foreground transition-colors">About</a>
-                        <a href="#skills" className="hover:text-foreground transition-colors">Skills</a>
-                        <a href="#experience" className="hover:text-foreground transition-colors">Experience</a>
-                        <a href="#projects" className="hover:text-foreground transition-colors">Projects</a>
-                        <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
                     </div>
 
                     {/* Back to top button */}
@@ -74,24 +65,15 @@ export function Footer() {
                     </button>
                 </div>
 
-                {/* Bottom Row: Timestamp, Copyright, Attribution */}
+                {/* Bottom Row: Copyright and Timer */}
                 <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground font-mono">
                     <p>
-                        &copy; {new Date().getFullYear()} Balakrishnan M · <span className="font-semibold text-foreground">ansverse</span>. All rights reserved.
+                        &copy; {new Date().getFullYear()} Portfolio. All rights reserved.
                     </p>
 
-                    <p className="text-zinc-500 dark:text-zinc-400 text-center" suppressHydrationWarning>
+                    <p className="text-zinc-500 dark:text-zinc-400 text-center md:text-right" suppressHydrationWarning>
                         {time || "Loading IST Clock..."}
                     </p>
-
-                    <div className="flex items-center gap-1.5 text-zinc-500 dark:text-zinc-400">
-                        <span>Crafted with</span>
-                        <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline" />
-                        <span>&</span>
-                        <Sparkles className="w-3.5 h-3.5 text-amber-500 inline" />
-                        <span>by</span>
-                        <span className="font-bold text-foreground">ansverse</span>
-                    </div>
                 </div>
 
             </div>

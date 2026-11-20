@@ -1,7 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
 import { 
-    Briefcase, 
     GraduationCap, 
     Award, 
     MapPin, 
@@ -9,7 +8,7 @@ import {
     Sparkles
 } from "lucide-react"
 
-const experiences = [
+const fullTimeExperiences = [
     {
         company: "Vanilla Networks Pvt Ltd",
         location: "Technopark, Trivandrum, Kerala, India",
@@ -79,29 +78,30 @@ const experiences = [
                 skills: ["WordPress", "WooCommerce", "Payment Gateways", "Bootstrap", "jQuery", "HTML5/CSS3"]
             }
         ]
-    },
-    {
-        company: "Srishti Innovative",
-        location: "Trivandrum, Kerala, India",
-        type: "Internship",
-        totalDuration: "6 mos",
-        logoText: "SI",
-        logoGradient: "from-purple-600 to-violet-700",
-        roles: [
-            {
-                title: "Web Development Intern",
-                type: "Internship",
-                period: "May 2016 - Oct 2016",
-                duration: "6 mos",
-                location: "Trivandrum, India · On-site",
-                points: [
-                    "Built responsive UI layouts (HTML5, CSS3, JavaScript, Bootstrap, jQuery, Ajax) and dynamic server-side CRUD modules (PHP, CodeIgniter, Laravel, MySQL, WordPress, CMS) during a 6-month intensive internship."
-                ],
-                skills: ["PHP", "CodeIgniter", "MySQL", "JavaScript", "Bootstrap", "CRUD Modules", "WordPress"]
-            }
-        ]
     }
 ]
+
+const internshipExperience = {
+    company: "Srishti Innovative",
+    location: "Trivandrum, Kerala, India",
+    type: "Internship",
+    totalDuration: "6 mos",
+    logoText: "SI",
+    logoGradient: "from-purple-600 to-violet-700",
+    roles: [
+        {
+            title: "Web Development Intern",
+            type: "Internship",
+            period: "May 2016 - Oct 2016",
+            duration: "6 mos",
+            location: "Trivandrum, India · On-site",
+            points: [
+                "Built responsive UI layouts (HTML5, CSS3, JavaScript, Bootstrap, jQuery, Ajax) and dynamic server-side CRUD modules (PHP, CodeIgniter, Laravel, MySQL, WordPress, CMS) during a 6-month intensive internship."
+            ],
+            skills: ["PHP", "CodeIgniter", "MySQL", "JavaScript", "Bootstrap", "CRUD Modules", "WordPress"]
+        }
+    ]
+}
 
 const education = [
     {
@@ -143,42 +143,26 @@ export function Experience() {
         <section id="experience" className="py-16 md:py-32 relative">
             <div className="container mx-auto px-4 md:px-6">
                 
-                {/* Header */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <div className="flex items-center gap-2 mb-3">
-                            <span className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
-                                <Briefcase className="w-4 h-4" />
-                            </span>
-                            <span className="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">
-                                Career History
-                            </span>
-                        </div>
-                        <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-4 text-foreground">
-                            Work <span className="text-zinc-400 dark:text-white/40">Experience</span>
+                {/* Section Header */}
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-4">
+                    <div>
+                        <span className="text-xs font-mono font-semibold tracking-wider text-primary uppercase bg-primary/10 dark:bg-white/10 px-3 py-1 rounded-full border border-primary/20 dark:border-white/15">
+                            {"// 02 · CAREER & WORK EXPERIENCE"}
+                        </span>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-foreground mt-4">
+                            Work Experience & Track Record
                         </h2>
-                        <div className="w-20 h-1 bg-zinc-200 dark:bg-white/20 rounded-full" />
-                    </motion.div>
-
-                    <motion.p
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="text-muted-foreground max-w-sm text-left md:text-right text-base"
-                    >
+                    </div>
+                    <p className="text-sm md:text-base text-muted-foreground max-w-md">
                         8+ years of architecting scalable web applications, enterprise backends, automated test suites, and agentic AI systems.
-                    </motion.p>
+                    </p>
                 </div>
 
-                <div className="grid lg:grid-cols-12 gap-10">
+                <div className="grid lg:grid-cols-12 gap-10 items-start">
                     
-                    {/* Left Column: LinkedIn-Style Experience Timeline */}
+                    {/* Left Column (8 cols): Full-Time Engineering Companies */}
                     <div className="lg:col-span-8 space-y-8">
-                        {experiences.map((exp, expIdx) => (
+                        {fullTimeExperiences.map((exp, expIdx) => (
                             <motion.div
                                 key={exp.company}
                                 initial={{ opacity: 0, y: 25 }}
@@ -271,7 +255,7 @@ export function Experience() {
                         ))}
                     </div>
 
-                    {/* Right Column: LinkedIn-Style Certifications & Education */}
+                    {/* Right Column (4 cols): Certifications, Internship Record & Education */}
                     <div className="lg:col-span-4 space-y-8">
                         
                         {/* Licenses & Certifications (Courses & Training) */}
@@ -349,6 +333,70 @@ export function Experience() {
                                     </div>
                                 ))}
                             </div>
+                        </motion.div>
+
+                        {/* Srishti Innovative Internship Record (Moved to Right Column) */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 25 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="glass-card p-6 md:p-8 rounded-3xl border border-zinc-200 dark:border-white/5 bg-white/60 dark:bg-white/[0.02] hover:bg-white/80 dark:hover:bg-white/[0.04] transition-all"
+                        >
+                            {/* Company Header */}
+                            <div className="flex items-start gap-4 mb-5">
+                                <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${internshipExperience.logoGradient} text-white font-black text-lg flex items-center justify-center flex-shrink-0 shadow-md border border-white/20`}>
+                                    {internshipExperience.logoText}
+                                </div>
+
+                                <div className="flex-1 min-w-0">
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                                        <h3 className="text-lg md:text-xl font-bold text-foreground tracking-tight">
+                                            {internshipExperience.company}
+                                        </h3>
+                                        <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 w-fit">
+                                            {internshipExperience.type} · {internshipExperience.totalDuration}
+                                        </span>
+                                    </div>
+                                    <p className="text-xs text-muted-foreground mt-0.5">
+                                        {internshipExperience.location}
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* Internship Role Content */}
+                            {internshipExperience.roles.map((role) => (
+                                <div key={role.title} className="space-y-3 pt-1 border-t border-zinc-200/60 dark:border-white/5">
+                                    <div className="pt-2">
+                                        <h4 className="text-base font-bold text-foreground">
+                                            {role.title}
+                                        </h4>
+                                        <p className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 mt-0.5">
+                                            {role.period} · {role.duration}
+                                        </p>
+                                    </div>
+
+                                    <ul className="space-y-2 text-xs text-muted-foreground leading-relaxed">
+                                        {role.points.map((pt, pIdx) => (
+                                            <li key={pIdx} className="flex items-start gap-2">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 flex-shrink-0" />
+                                                <span>{pt}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <div className="flex flex-wrap gap-1 pt-1">
+                                        {role.skills.map((s) => (
+                                            <span
+                                                key={s}
+                                                className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-zinc-300 border border-zinc-200/60 dark:border-white/5"
+                                            >
+                                                {s}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
                         </motion.div>
 
                         {/* Education Section */}

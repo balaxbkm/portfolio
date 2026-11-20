@@ -6,7 +6,7 @@ import { track } from "@vercel/analytics"
 
 export function Hero() {
     return (
-        <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-28 md:pt-36 pb-16 md:pb-24">
+        <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-28 md:pt-36 lg:pt-44 xl:pt-48 pb-16 md:pb-24">
 
             {/* Ambient Background Glows & Subtitle Grid */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
@@ -27,7 +27,7 @@ export function Hero() {
             <div className="container mx-auto px-4 md:px-6 relative z-10">
 
                 {/* Two-Column Grid: Developer Showcase (Left) + Executive Profile (Right) */}
-                <div className="grid lg:grid-cols-12 gap-12 lg:gap-14 items-center max-w-6xl mx-auto">
+                <div className="grid lg:grid-cols-12 gap-12 lg:gap-14 items-center max-w-6xl mx-auto lg:pt-6 xl:pt-8">
 
                     {/* Column 1 (Left): Creative Bento Developer Station with Interactive HUD */}
                     <div className="lg:col-span-5 flex justify-center order-1 lg:order-1">
@@ -135,7 +135,7 @@ export function Hero() {
                                 <div className="p-1 rounded-lg bg-blue-500/10 text-blue-500">
                                     <Code2 className="w-3.5 h-3.5" />
                                 </div>
-                                <span className="text-[11px] font-mono font-bold text-foreground">Next · Laravel</span>
+                                <span className="text-[11px] font-mono font-bold text-foreground">Next.js &amp; Laravel</span>
                             </motion.div>
 
                         </motion.div>
@@ -173,10 +173,10 @@ export function Hero() {
                             transition={{ duration: 0.6, delay: 0.1 }}
                             className="space-y-3"
                         >
-                            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-foreground leading-[1.05]">
-                                Balakrishnan <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">M</span>
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-foreground leading-tight">
+                                Balakrishnan M
                             </h1>
-                            <p className="text-lg sm:text-xl md:text-2xl font-bold text-muted-foreground leading-snug">
+                            <p className="text-base sm:text-lg md:text-xl font-semibold text-muted-foreground leading-snug">
                                 Architecting high-throughput <span className="text-foreground">Laravel & Node.js</span> APIs, modern <span className="text-foreground">React & Next.js</span> frontends, and <span className="text-foreground">Agentic AI</span> workflows.
                             </p>
                         </motion.div>

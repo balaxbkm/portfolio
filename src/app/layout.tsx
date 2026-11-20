@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CustomCursor } from "@/components/custom-cursor";
 import { BackgroundCircles } from "@/components/background-circles";
+import { AiChatWidget } from "@/components/ai-chat-widget";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -59,6 +60,7 @@ export default function RootLayout({
         >
           <CustomCursor />
           <BackgroundCircles />
+          <AiChatWidget />
           <SpeedInsights />
           <Analytics />
           {children}

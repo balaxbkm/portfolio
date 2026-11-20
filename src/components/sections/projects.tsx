@@ -71,8 +71,8 @@ export function Projects() {
                         <span className="text-xs font-mono font-semibold tracking-wider text-primary uppercase bg-primary/10 dark:bg-white/10 px-3 py-1 rounded-full border border-primary/20 dark:border-white/15">
                             {"// 03 · FEATURED ENGINEERING WORKS"}
                         </span>
-                        <h2 className="text-3xl md:text-5xl font-black tracking-tight text-foreground mt-4">
-                            Selected Systems & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400">Platforms</span>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-foreground mt-4">
+                            My Works & Featured Projects
                         </h2>
                     </div>
                     <p className="text-sm md:text-base text-muted-foreground max-w-md">
@@ -98,9 +98,6 @@ export function Projects() {
                                     <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
                                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                                 </div>
-                                <span className="px-2 py-0.5 rounded-full bg-zinc-100/80 dark:bg-white/5 border border-zinc-200/60 dark:border-white/10 text-[10px] font-mono font-bold text-zinc-500 dark:text-zinc-400 tracking-wider uppercase">
-                                    CASE STUDY
-                                </span>
                                 <span className="text-xs font-bold text-zinc-400 dark:text-white/40">
                                     #{project.id}
                                 </span>

@@ -46,14 +46,14 @@ export function Navbar() {
     return (
         <header className="fixed top-0 left-0 w-full z-50 px-4 md:px-6 py-3 transition-all duration-300 pointer-events-none">
             <nav 
-                className={`max-w-5xl mx-auto rounded-full transition-all duration-300 pointer-events-auto px-4 md:px-6 py-2.5 flex items-center justify-between
+                className={`max-w-5xl mx-auto rounded-full transition-all duration-300 pointer-events-auto px-2.5 md:px-3.5 py-2.5 flex items-center justify-between
                 ${scrolled 
                     ? "bg-white/85 dark:bg-zinc-950/80 backdrop-blur-xl border border-zinc-200/80 dark:border-white/10 shadow-lg shadow-black/5 dark:shadow-black/30" 
                     : "bg-white/50 dark:bg-black/30 backdrop-blur-md border border-zinc-200/50 dark:border-white/5"
                 }`}
             >
                 {/* Brand / Logo */}
-                <Link href="/" className="flex items-center gap-3 group">
+                <Link href="/" className="flex items-center gap-2.5 md:gap-3 group">
                     <div className="relative w-10 h-10 rounded-full overflow-hidden shadow-sm border border-black/5 dark:border-white/10 flex-shrink-0 group-hover:scale-105 transition-transform">
                         <Image
                             src="/logo-photo.jpg"

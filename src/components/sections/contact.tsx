@@ -26,8 +26,8 @@ export function Contact() {
                         <span className="text-xs font-mono font-semibold tracking-wider text-primary uppercase bg-primary/10 dark:bg-white/10 px-3 py-1 rounded-full border border-primary/20 dark:border-white/15">
                             {"// 04 · GET IN TOUCH"}
                         </span>
-                        <h2 className="text-3xl md:text-5xl font-black tracking-tight text-foreground mt-4">
-                            Let&apos;s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-emerald-600 dark:from-blue-400 dark:via-indigo-400 dark:to-emerald-400">Extraordinary</span>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-foreground mt-4">
+                            Let&apos;s Connect & Collaborate
                         </h2>
                     </div>
                     <p className="text-sm md:text-base text-muted-foreground max-w-md">

@@ -76,13 +76,18 @@ export function Skills() {
             <div className="container mx-auto px-4 md:px-6">
                 
                 {/* Section Header */}
-                <div className="mb-12 md:mb-16">
-                    <span className="text-xs font-mono font-semibold tracking-wider text-primary uppercase bg-primary/10 dark:bg-white/10 px-3 py-1 rounded-full border border-primary/20 dark:border-white/15">
-                        {"// 01 · ABOUT & CORE EXPERTISE"}
-                    </span>
-                    <h2 className="text-3xl md:text-5xl font-black tracking-tight text-foreground mt-4">
-                        Engineering Scalable Systems With <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400">Precision & AI</span>
-                    </h2>
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-4">
+                    <div>
+                        <span className="text-xs font-mono font-semibold tracking-wider text-primary uppercase bg-primary/10 dark:bg-white/10 px-3 py-1 rounded-full border border-primary/20 dark:border-white/15">
+                            {"// 01 · ABOUT & CORE EXPERTISE"}
+                        </span>
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-foreground mt-4">
+                            Skills & Technical Expertise
+                        </h2>
+                    </div>
+                    <p className="text-sm md:text-base text-muted-foreground max-w-md">
+                        Full-stack architectures, high-throughput backend APIs, and automated E2E test suites with rigorous enterprise quality.
+                    </p>
                 </div>
 
                 <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
