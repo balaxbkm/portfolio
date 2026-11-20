@@ -4,24 +4,60 @@ import { Layout, Server, Database, Sparkles } from "lucide-react"
 
 const techStack = [
     {
-        title: "Frontend & Mobile",
+        title: "Frontend & Web",
         icon: <Layout className="w-5 h-5 text-blue-500" />,
-        items: ["React.js", "Next.js", "TypeScript", "JavaScript (ES6+)", "Tailwind CSS", "HTML5 / CSS3", "Flutter", "Angular", "jQuery"]
+        items: [
+            "React.js",
+            "Next.js",
+            "TypeScript",
+            "JavaScript (ES6+)",
+            "Tailwind CSS",
+            "Bootstrap",
+            "HTML5 / CSS3",
+            "jQuery"
+        ]
     },
     {
         title: "Backend & Systems",
         icon: <Server className="w-5 h-5 text-green-500" />,
-        items: ["PHP", "Laravel", "CodeIgniter", "Node.js", "Python", "RESTful API Architecture", "Webhooks", "JSON/XML"]
+        items: [
+            "PHP",
+            "Laravel",
+            "CodeIgniter",
+            "Node.js",
+            "Python",
+            "RESTful API Architecture",
+            "Webhooks",
+            "JSON / XML Parsing"
+        ]
     },
     {
         title: "AI & Test Automation",
         icon: <Sparkles className="w-5 h-5 text-purple-500" />,
-        items: ["LLM API Integration (Gemini, Claude, OpenAI)", "Prompt Engineering", "Playwright (E2E Automation)", "Regression Testing", "OCR Pipelines", "Postman API Testing"]
+        items: [
+            "Agentic AI (Antigravity, Claude Code)",
+            "Claude Skills",
+            "LLM APIs (Gemini, Claude, OpenAI)",
+            "Prompt Engineering",
+            "Playwright (E2E Automation)",
+            "Postman API Testing",
+            "Regression Testing"
+        ]
     },
     {
-        title: "Databases & Cloud",
+        title: "Databases, DevOps & Cloud",
         icon: <Database className="w-5 h-5 text-orange-500" />,
-        items: ["MySQL", "PostgreSQL", "MongoDB", "Firebase (Firestore / Realtime)", "Git / GitHub", "Stripe & PayPal", "WooCommerce", "Vercel"]
+        items: [
+            "Docker",
+            "MySQL",
+            "PostgreSQL",
+            "MongoDB",
+            "Firebase",
+            "Git / GitHub",
+            "Payment Gateways (Stripe, PayPal, GPay)",
+            "WordPress / WooCommerce",
+            "Vercel"
+        ]
     }
 ]
 
@@ -42,10 +78,10 @@ export function Skills() {
                         </div>
 
                         <p className="text-muted-foreground leading-relaxed text-base md:text-lg">
-                            Hello! I'm <span className="text-foreground font-semibold">Balakrishnan M</span>, a Senior Full-Stack Software Engineer with <span className="text-foreground font-semibold">8+ years of experience</span> architecting, developing, and deploying robust web applications, RESTful APIs, and scalable backend systems.
+                            Hello! I&apos;m <span className="text-foreground font-semibold">Balakrishnan M</span>, a Senior Full-Stack Software Engineer with <span className="text-foreground font-semibold">8+ years of experience</span> designing, developing, and deploying robust web applications, RESTful APIs, and scalable backend architectures.
                         </p>
                         <p className="text-muted-foreground leading-relaxed text-base">
-                            Specializing in <span className="text-foreground font-medium">PHP (Laravel, CodeIgniter)</span>, <span className="text-foreground font-medium">modern JavaScript/TypeScript (React, Next.js, Node.js)</span>, and database optimization. Experienced in integrating intelligent AI workflows (LLM APIs, prompt engineering) and implementing end-to-end automation testing with Playwright to ensure high code quality, system resilience, and continuous delivery across enterprise platforms.
+                            Proficient across the entire software development lifecycle, specializing in <span className="text-foreground font-medium">PHP (Laravel, CodeIgniter)</span>, <span className="text-foreground font-medium">modern JavaScript/TypeScript (React, Next.js, Node.js)</span>, <span className="text-foreground font-medium">Docker</span>, and database optimization. Experienced in integrating intelligent AI workflows (Agentic AI, Antigravity, Claude Code, LLM APIs, prompt engineering) and implementing end-to-end automation testing with Playwright to ensure high code quality, system resilience, and continuous delivery across enterprise platforms.
                         </p>
 
                         <div className="grid grid-cols-2 gap-y-6 text-sm">
@@ -81,7 +117,7 @@ export function Skills() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.1 }}
-                                    className="glass-card p-8 rounded-3xl border border-zinc-200 dark:border-white/5 bg-white/50 dark:bg-white/[0.02] hover:bg-white/80 dark:hover:bg-white/[0.04] transition-colors group"
+                                    className="glass-card p-7 md:p-8 rounded-3xl border border-zinc-200 dark:border-white/5 bg-white/50 dark:bg-white/[0.02] hover:bg-white/80 dark:hover:bg-white/[0.04] transition-colors group"
                                 >
                                     <div className="flex items-center gap-3 mb-6 border-b border-zinc-200 dark:border-white/5 pb-4">
                                         <div className="p-2 rounded-xl bg-zinc-100 dark:bg-white/5 group-hover:bg-zinc-200 dark:group-hover:bg-white/10 transition-colors">

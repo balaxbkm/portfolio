@@ -36,8 +36,9 @@ export function Navbar() {
     }, [])
 
     const navLinks = [
-        { name: "Home", href: "/#home" }, // Updated href to include hash for accurate tracking if page.tsx has id="home" on hero implies we might need to update hero id
+        { name: "Home", href: "/#home" },
         { name: "About", href: "#about" },
+        { name: "Experience", href: "#experience" },
         { name: "Projects", href: "#projects" },
         { name: "Contact", href: "#contact" },
     ]
@@ -81,6 +82,8 @@ export function Navbar() {
                     <ThemeToggle />
                     <a
                         href="/Resume_Balakrishnan_M.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         download="Resume_Balakrishnan_M.pdf"
                         onClick={() => track("resume_download", { location: "navbar" })}
                         className="px-6 py-2 rounded-full border border-zinc-200 dark:border-white/20 text-foreground hover:bg-foreground hover:text-background transition-all text-sm font-medium flex items-center gap-2 group"
@@ -117,6 +120,8 @@ export function Navbar() {
                     ))}
                     <a
                         href="/Resume_Balakrishnan_M.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         download="Resume_Balakrishnan_M.pdf"
                         className="px-6 py-2 rounded-full border border-white/20 text-white hover:bg-white hover:text-black transition-all text-sm font-medium flex items-center gap-2 group mt-2"
                         onClick={() => {
