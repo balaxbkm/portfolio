@@ -232,7 +232,7 @@ export function AiChatWidget() {
   const dynamicSuggestions = getDynamicSuggestions(messages)
 
   return (
-    <>
+    <div className="hidden md:block">
       {/* Floating Trigger Button */}
       <div className="fixed bottom-6 right-6 z-50">
         {!isOpen ? (
@@ -260,7 +260,7 @@ export function AiChatWidget() {
 
       {/* Floating Chat Drawer Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-4 sm:right-6 z-50 w-[92vw] sm:w-[420px] h-[590px] max-h-[85vh] flex flex-col rounded-3xl glass-strong border border-zinc-200/90 dark:border-white/15 shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-6 duration-300">
+        <div className="fixed bottom-6 right-6 z-50 w-[420px] h-[590px] max-h-[85vh] flex flex-col rounded-3xl glass-strong border border-zinc-200/90 dark:border-white/15 shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-6 duration-300">
           
           {/* Header */}
           <div className="p-4 bg-zinc-100/80 dark:bg-zinc-900/80 border-b border-zinc-200/80 dark:border-white/10 flex items-center justify-between backdrop-blur-xl">
@@ -426,6 +426,6 @@ export function AiChatWidget() {
 
         </div>
       )}
-    </>
+    </div>
   )
 }
