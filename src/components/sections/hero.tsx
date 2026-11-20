@@ -100,7 +100,7 @@ export function Hero() {
                             <motion.div
                                 animate={{ y: [0, -6, 0] }}
                                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                                className="absolute -top-4 -left-4 sm:-left-6 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl border border-zinc-200/90 dark:border-white/15 shadow-xl flex items-center gap-2.5 z-20"
+                                className="absolute -top-3 left-1 sm:-left-6 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl border border-zinc-200/90 dark:border-white/15 shadow-xl flex items-center gap-2.5 z-20"
                             >
                                 <div className="p-1.5 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
                                     <Terminal className="w-4 h-4" />
@@ -115,7 +115,7 @@ export function Hero() {
                             <motion.div
                                 animate={{ y: [0, 6, 0] }}
                                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                className="absolute -bottom-3 -right-3 sm:-right-5 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl border border-zinc-200/90 dark:border-white/15 shadow-xl flex items-center gap-2.5 z-20"
+                                className="absolute -bottom-3 right-1 sm:-right-5 px-3.5 py-2 rounded-2xl bg-white/95 dark:bg-zinc-900/95 backdrop-blur-xl border border-zinc-200/90 dark:border-white/15 shadow-xl flex items-center gap-2.5 z-20"
                             >
                                 <div className="p-1.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                                     <ShieldCheck className="w-4 h-4" />
@@ -130,7 +130,7 @@ export function Hero() {
                             <motion.div
                                 animate={{ x: [0, 5, 0] }}
                                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                                className="hidden sm:flex absolute top-1/2 -translate-y-1/2 -right-8 px-3 py-1.5 rounded-2xl bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border border-zinc-200/90 dark:border-white/15 shadow-lg items-center gap-2 z-20"
+                                className="hidden sm:flex absolute top-1/2 -translate-y-1/2 right-1 lg:-right-8 px-3 py-1.5 rounded-2xl bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl border border-zinc-200/90 dark:border-white/15 shadow-lg items-center gap-2 z-20"
                             >
                                 <div className="p-1 rounded-lg bg-blue-500/10 text-blue-500">
                                     <Code2 className="w-3.5 h-3.5" />
