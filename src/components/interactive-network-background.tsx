@@ -2,18 +2,20 @@
 
 import { useEffect, useRef } from "react"
 
-interface Node {
+interface StardustParticle {
   x: number
   y: number
+  originX: number
+  originY: number
   vx: number
   vy: number
-  baseVx: number
-  baseVy: number
-  radius: number
-  phase: number
+  size: number
+  depth: number // 0.3 (deep background) to 1.0 (foreground)
+  alpha: number
+  baseAlpha: number
   pulseSpeed: number
-  dispX: number
-  dispY: number
+  pulseOffset: number
+  color: string
 }
 
 export function InteractiveNetworkBackground() {
@@ -33,52 +35,74 @@ export function InteractiveNetworkBackground() {
     let isDark = document.documentElement.classList.contains("dark")
     let prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
-    // Responsive node list
-    const nodes: Node[] = []
+    const particles: StardustParticle[] = []
 
-    // Pointer state
-    const pointer = {
-      x: -1000,
-      y: -1000,
-      targetX: -1000,
-      targetY: -1000,
+    // Smooth cursor & fluid velocity tracker
+    const mouse = {
+      x: -2000,
+      y: -2000,
+      targetX: -2000,
+      targetY: -2000,
+      prevX: -2000,
+      prevY: -2000,
+      vx: 0,
+      vy: 0,
+      speed: 0,
       isActive: false,
-      intensity: 0, // smoothly eases 0 -> 1 -> 0
+      intensity: 0, // 0 to 1 smooth fade
     }
 
-    // Observe theme changes (dark/light toggle)
+    // Palette definition
+    const getPalette = (dark: boolean) => {
+      if (dark) {
+        return {
+          primary: "129, 140, 248", // Indigo-400
+          secondary: "168, 85, 247", // Purple-500
+          accent: "56, 189, 248", // Sky-400
+          glowCore: "rgba(99, 102, 241, 0.16)",
+          glowMid: "rgba(168, 85, 247, 0.08)",
+          glowOuter: "rgba(56, 189, 248, 0.02)",
+        }
+      }
+      return {
+        primary: "99, 102, 241", // Indigo-500
+        secondary: "147, 51, 234", // Purple-600
+        accent: "14, 165, 233", // Sky-500
+        glowCore: "rgba(99, 102, 241, 0.10)",
+        glowMid: "rgba(147, 51, 234, 0.05)",
+        glowOuter: "rgba(14, 165, 233, 0.015)",
+      }
+    }
+
+    let palette = getPalette(isDark)
+
+    // Theme mutation observer
     const themeObserver = new MutationObserver(() => {
       isDark = document.documentElement.classList.contains("dark")
+      palette = getPalette(isDark)
     })
     themeObserver.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["class"],
     })
 
-    // Observe motion preference changes
-    const motionMediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
+    // Motion preference observer
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
     const handleMotionChange = (e: MediaQueryListEvent) => {
       prefersReducedMotion = e.matches
     }
-    motionMediaQuery.addEventListener("change", handleMotionChange)
+    motionQuery.addEventListener("change", handleMotionChange)
 
-    // Calculate node count based on screen area
-    const getTargetNodeCount = (w: number, h: number) => {
+    // Calculate count based on viewport area
+    const getTargetCount = (w: number, h: number) => {
       const area = w * h
       const isMobile = w < 768
-      const isTablet = w >= 768 && w < 1024
-
-      if (prefersReducedMotion) {
-        return isMobile ? 18 : 30
-      }
-
-      const areaPerNode = isMobile ? 24000 : isTablet ? 19000 : 15000
-      const minNodes = isMobile ? 20 : isTablet ? 35 : 48
-      const maxNodes = isMobile ? 32 : isTablet ? 55 : 80
-      return Math.min(Math.max(Math.floor(area / areaPerNode), minNodes), maxNodes)
+      if (prefersReducedMotion) return isMobile ? 35 : 65
+      const density = isMobile ? 22000 : 16000
+      return Math.min(Math.max(Math.floor(area / density), isMobile ? 40 : 75), isMobile ? 65 : 120)
     }
 
-    // Initialize or resize nodes
+    // Initialize or resize canvas & particles
     const resizeCanvas = () => {
       width = window.innerWidth
       height = window.innerHeight
@@ -92,340 +116,240 @@ export function InteractiveNetworkBackground() {
       ctx.setTransform(1, 0, 0, 1, 0, 0)
       ctx.scale(dpr, dpr)
 
-      const targetCount = getTargetNodeCount(width, height)
-      const isMobile = width < 768
-      const speedScale = prefersReducedMotion ? 0.05 : isMobile ? 0.25 : 0.35
+      const targetCount = getTargetCount(width, height)
+      const colors = [palette.primary, palette.secondary, palette.accent]
 
-      // Adjust node count while preserving existing nodes
-      if (nodes.length < targetCount) {
-        const toAdd = targetCount - nodes.length
+      if (particles.length < targetCount) {
+        const toAdd = targetCount - particles.length
         for (let i = 0; i < toAdd; i++) {
-          const vx = (Math.random() - 0.5) * speedScale
-          const vy = (Math.random() - 0.5) * speedScale
-          nodes.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            vx,
-            vy,
-            baseVx: vx,
-            baseVy: vy,
-            radius: (Math.random() * 1.1 + 1.2) * (isMobile ? 0.85 : 1),
-            phase: Math.random() * Math.PI * 2,
-            pulseSpeed: 0.012 + Math.random() * 0.018,
-            dispX: 0,
-            dispY: 0,
+          const depth = Math.random() * 0.7 + 0.3 // 0.3 to 1.0
+          const x = Math.random() * width
+          const y = Math.random() * height
+          const color = colors[Math.floor(Math.random() * colors.length)]
+
+          particles.push({
+            x,
+            y,
+            originX: x,
+            originY: y,
+            vx: (Math.random() - 0.5) * 0.3 * depth,
+            vy: (Math.random() - 0.5) * 0.3 * depth,
+            size: (Math.random() * 1.5 + 0.8) * depth,
+            depth,
+            alpha: Math.random() * 0.5 + 0.2,
+            baseAlpha: Math.random() * 0.4 + 0.25,
+            pulseSpeed: 0.015 + Math.random() * 0.02,
+            pulseOffset: Math.random() * Math.PI * 2,
+            color,
           })
         }
-      } else if (nodes.length > targetCount) {
-        nodes.length = targetCount
+      } else if (particles.length > targetCount) {
+        particles.length = targetCount
       }
     }
 
     resizeCanvas()
     window.addEventListener("resize", resizeCanvas, { passive: true })
 
-    // Pointer events (desktop + mobile touch)
-    const handlePointerMove = (e: MouseEvent | PointerEvent) => {
-      pointer.targetX = e.clientX
-      pointer.targetY = e.clientY
-      pointer.isActive = true
+    // Cursor tracking
+    const onPointerMove = (e: MouseEvent | PointerEvent) => {
+      mouse.targetX = e.clientX
+      mouse.targetY = e.clientY
+      mouse.isActive = true
     }
 
-    const handlePointerLeave = () => {
-      pointer.isActive = false
+    const onPointerLeave = () => {
+      mouse.isActive = false
     }
 
-    const handleTouchStart = (e: TouchEvent) => {
+    const onTouchMove = (e: TouchEvent) => {
       if (e.touches.length > 0) {
-        pointer.targetX = e.touches[0].clientX
-        pointer.targetY = e.touches[0].clientY
-        pointer.isActive = true
+        mouse.targetX = e.touches[0].clientX
+        mouse.targetY = e.touches[0].clientY
+        mouse.isActive = true
       }
     }
 
-    const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        pointer.targetX = e.touches[0].clientX
-        pointer.targetY = e.touches[0].clientY
-        pointer.isActive = true
-      }
+    const onTouchEnd = () => {
+      mouse.isActive = false
     }
 
-    const handleTouchEnd = () => {
-      pointer.isActive = false
-    }
+    window.addEventListener("pointermove", onPointerMove, { passive: true })
+    document.addEventListener("mouseleave", onPointerLeave, { passive: true })
+    window.addEventListener("touchmove", onTouchMove, { passive: true })
+    window.addEventListener("touchend", onTouchEnd, { passive: true })
 
-    window.addEventListener("pointermove", handlePointerMove, { passive: true })
-    document.addEventListener("mouseleave", handlePointerLeave, { passive: true })
-    window.addEventListener("touchstart", handleTouchStart, { passive: true })
-    window.addEventListener("touchmove", handleTouchMove, { passive: true })
-    window.addEventListener("touchend", handleTouchEnd, { passive: true })
-    window.addEventListener("touchcancel", handleTouchEnd, { passive: true })
-
-    // Pause rendering when tab is hidden to save 100% CPU/GPU
-    let isPageVisible = !document.hidden
-    const handleVisibilityChange = () => {
-      isPageVisible = !document.hidden
-      if (isPageVisible) {
+    // Page visibility to pause animation when inactive
+    let isVisible = !document.hidden
+    const onVisibilityChange = () => {
+      isVisible = !document.hidden
+      if (isVisible) {
         lastTime = performance.now()
         animationFrameId = requestAnimationFrame(render)
       } else {
         cancelAnimationFrame(animationFrameId)
       }
     }
-    document.addEventListener("visibilitychange", handleVisibilityChange)
+    document.addEventListener("visibilitychange", onVisibilityChange)
 
     let lastTime = performance.now()
 
-    // Animation render loop
+    // Main render loop
     const render = (now: number) => {
-      if (!isPageVisible) return
+      if (!isVisible) return
 
-      const dt = Math.min((now - lastTime) / 1000, 0.1) // clamp delta
+      const dt = Math.min((now - lastTime) / 1000, 0.1)
       lastTime = now
 
       ctx.clearRect(0, 0, width, height)
 
-      // Smooth pointer interpolation and intensity fading
-      if (pointer.isActive) {
-        pointer.intensity += (1 - pointer.intensity) * Math.min(1, dt * 8)
-        pointer.x += (pointer.targetX - pointer.x) * Math.min(1, dt * 15)
-        pointer.y += (pointer.targetY - pointer.y) * Math.min(1, dt * 15)
+      // Smooth pointer & velocity calculation
+      if (mouse.isActive) {
+        mouse.intensity += (1 - mouse.intensity) * Math.min(1, dt * 7)
+        
+        // Calculate instantaneous velocity
+        const dx = mouse.targetX - mouse.x
+        const dy = mouse.targetY - mouse.y
+        mouse.vx = dx * Math.min(1, dt * 18)
+        mouse.vy = dy * Math.min(1, dt * 18)
+        mouse.speed = Math.sqrt(mouse.vx * mouse.vx + mouse.vy * mouse.vy)
+
+        mouse.x += mouse.vx
+        mouse.y += mouse.vy
       } else {
-        pointer.intensity += (0 - pointer.intensity) * Math.min(1, dt * 4)
+        mouse.intensity += (0 - mouse.intensity) * Math.min(1, dt * 3)
+        mouse.speed *= 0.9
       }
 
       const isMobile = width < 768
-      const interactionRadius = isMobile ? 130 : 180
-      const interactionRadiusSq = interactionRadius * interactionRadius
-      const connectionDist = isMobile ? 110 : 135
-      const connectionDistSq = connectionDist * connectionDist
-      const cursorConnectDist = isMobile ? 120 : 160
-      const cursorConnectDistSq = cursorConnectDist * cursorConnectDist
+      const mouseRadius = isMobile ? 140 : 200
+      const mouseRadiusSq = mouseRadius * mouseRadius
 
-      // 1. Draw subtle interactive glow around the cursor
-      if (pointer.intensity > 0.01) {
-        const glowRadius = isMobile ? 140 : 190
-        const glowGradient = ctx.createRadialGradient(
-          pointer.x,
-          pointer.y,
+      // 1. Draw luminous ambient light wake around the cursor
+      if (mouse.intensity > 0.01) {
+        const glowRadius = mouseRadius * (1 + Math.min(mouse.speed * 0.04, 0.35))
+        const glow = ctx.createRadialGradient(
+          mouse.x,
+          mouse.y,
           0,
-          pointer.x,
-          pointer.y,
+          mouse.x,
+          mouse.y,
           glowRadius
         )
 
-        if (isDark) {
-          glowGradient.addColorStop(0, `rgba(99, 102, 241, ${0.14 * pointer.intensity})`)
-          glowGradient.addColorStop(0.4, `rgba(56, 189, 248, ${0.05 * pointer.intensity})`)
-          glowGradient.addColorStop(1, "rgba(99, 102, 241, 0)")
-        } else {
-          glowGradient.addColorStop(0, `rgba(99, 102, 241, ${0.1 * pointer.intensity})`)
-          glowGradient.addColorStop(0.5, `rgba(79, 70, 229, ${0.03 * pointer.intensity})`)
-          glowGradient.addColorStop(1, "rgba(99, 102, 241, 0)")
-        }
+        glow.addColorStop(0, palette.glowCore.replace(")", `, ${0.8 * mouse.intensity})`).replace("rgba", "rgba"))
+        glow.addColorStop(0.4, palette.glowMid.replace(")", `, ${0.6 * mouse.intensity})`).replace("rgba", "rgba"))
+        glow.addColorStop(1, "transparent")
 
-        ctx.fillStyle = glowGradient
+        ctx.fillStyle = glow
         ctx.beginPath()
-        ctx.arc(pointer.x, pointer.y, glowRadius, 0, Math.PI * 2)
+        ctx.arc(mouse.x, mouse.y, glowRadius, 0, Math.PI * 2)
         ctx.fill()
       }
 
-      // 2. Update node positions & gentle cursor repulsion physics
-      const nodeCount = nodes.length
-      const margin = 25
+      const particleCount = particles.length
 
-      for (let i = 0; i < nodeCount; i++) {
-        const node = nodes[i]
+      // 2. Update and draw particles with magnetic physics
+      for (let i = 0; i < particleCount; i++) {
+        const p = particles[i]
 
-        // Organic base drift
-        node.x += node.vx
-        node.y += node.vy
+        // Ambient Brownian drift
+        p.x += p.vx
+        p.y += p.vy
 
-        // Wrap around viewport edges smoothly
-        if (node.x < -margin) node.x = width + margin
-        else if (node.x > width + margin) node.x = -margin
+        // Wrap around boundaries smoothly
+        const padding = 20
+        if (p.x < -padding) p.x = width + padding
+        else if (p.x > width + padding) p.x = -padding
+        if (p.y < -padding) p.y = height + padding
+        else if (p.y > height + padding) p.y = -padding
 
-        if (node.y < -margin) node.y = height + margin
-        else if (node.y > height + margin) node.y = -margin
+        // Cursor magnetic wave interaction
+        let proximityFactor = 0
 
-        // Cursor interaction force
-        let targetDispX = 0
-        let targetDispY = 0
+        if (mouse.intensity > 0.01 && !prefersReducedMotion) {
+          const mdx = p.x - mouse.x
+          const mdy = p.y - mouse.y
+          const distSq = mdx * mdx + mdy * mdy
 
-        if (pointer.intensity > 0.01 && !prefersReducedMotion) {
-          const effectiveX = node.x + node.dispX
-          const effectiveY = node.y + node.dispY
-          const dx = effectiveX - pointer.x
-          const dy = effectiveY - pointer.y
-          const distSq = dx * dx + dy * dy
-
-          if (distSq < interactionRadiusSq && distSq > 1) {
+          if (distSq < mouseRadiusSq && distSq > 1) {
             const dist = Math.sqrt(distSq)
-            const force =
-              Math.pow(1 - dist / interactionRadius, 1.6) *
-              (isMobile ? 24 : 36) *
-              pointer.intensity
+            proximityFactor = (1 - dist / mouseRadius) * mouse.intensity
 
-            targetDispX = (dx / dist) * force
-            targetDispY = (dy / dist) * force
+            // Gentle fluid displacement force
+            const force = proximityFactor * (isMobile ? 12 : 20) * p.depth
+            
+            // Add subtle tangential swirl to make motion feel like fluid
+            const angle = Math.atan2(mdy, mdx)
+            const swirlAngle = angle + 0.3 // slight swirl angle
+            p.x += Math.cos(swirlAngle) * force * dt * 8
+            p.y += Math.sin(swirlAngle) * force * dt * 8
           }
         }
 
-        // Smooth spring easing for displacement
-        node.dispX += (targetDispX - node.dispX) * Math.min(1, dt * 7)
-        node.dispY += (targetDispY - node.dispY) * Math.min(1, dt * 7)
+        // Natural breathing pulse
+        p.pulseOffset += p.pulseSpeed
+        const pulse = Math.sin(p.pulseOffset) * 0.25 + 0.75
+        const finalAlpha = Math.min(
+          1,
+          p.baseAlpha * pulse * p.depth + proximityFactor * (isDark ? 0.6 : 0.45)
+        )
+        const finalSize = p.size * (1 + proximityFactor * 0.6)
 
-        // Subtle pulsing
-        node.phase += node.pulseSpeed
-      }
+        // Draw particle dot with soft glow
+        ctx.beginPath()
+        ctx.arc(p.x, p.y, finalSize, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(${p.color}, ${finalAlpha})`
+        ctx.fill()
 
-      // 3. Render connection lines between interconnected nodes
-      for (let i = 0; i < nodeCount; i++) {
-        const nodeA = nodes[i]
-        const p1x = nodeA.x + nodeA.dispX
-        const p1y = nodeA.y + nodeA.dispY
-
-        for (let j = i + 1; j < nodeCount; j++) {
-          const nodeB = nodes[j]
-          const p2x = nodeB.x + nodeB.dispX
-          const p2y = nodeB.y + nodeB.dispY
-
-          const dx = p2x - p1x
-          const dy = p2y - p1y
-          const distSq = dx * dx + dy * dy
-
-          if (distSq < connectionDistSq) {
-            const dist = Math.sqrt(distSq)
-            const normDist = 1 - dist / connectionDist
-
-            // Proximity of this line's midpoint to pointer
-            let cursorBoost = 0
-            if (pointer.intensity > 0.01) {
-              const midX = (p1x + p2x) * 0.5
-              const midY = (p1y + p2y) * 0.5
-              const mdx = midX - pointer.x
-              const mdy = midY - pointer.y
-              const mDistSq = mdx * mdx + mdy * mdy
-              if (mDistSq < interactionRadiusSq) {
-                const mDist = Math.sqrt(mDistSq)
-                cursorBoost = (1 - mDist / interactionRadius) * 0.5 * pointer.intensity
-              }
-            }
-
-            const totalAlpha = Math.min(1, normDist * (isDark ? 0.22 : 0.16) + cursorBoost * 0.3)
-            ctx.beginPath()
-            ctx.moveTo(p1x, p1y)
-            ctx.lineTo(p2x, p2y)
-
-            if (isDark) {
-              if (cursorBoost > 0.1) {
-                // Activated line near cursor: subtle luminous violet-cyan
-                ctx.strokeStyle = `rgba(147, 197, 253, ${totalAlpha})`
-                ctx.lineWidth = 0.8
-              } else {
-                ctx.strokeStyle = `rgba(165, 180, 252, ${totalAlpha})`
-                ctx.lineWidth = 0.6
-              }
-            } else {
-              if (cursorBoost > 0.1) {
-                ctx.strokeStyle = `rgba(99, 102, 241, ${totalAlpha})`
-                ctx.lineWidth = 0.8
-              } else {
-                ctx.strokeStyle = `rgba(100, 116, 139, ${totalAlpha})`
-                ctx.lineWidth = 0.6
-              }
-            }
-
-            ctx.stroke()
-          }
-        }
-      }
-
-      // 4. Render dynamic connection lines from cursor to nearby nodes (neural web nexus)
-      if (pointer.intensity > 0.02 && !prefersReducedMotion) {
-        for (let i = 0; i < nodeCount; i++) {
-          const node = nodes[i]
-          const nx = node.x + node.dispX
-          const ny = node.y + node.dispY
-          const dx = nx - pointer.x
-          const dy = ny - pointer.y
-          const distSq = dx * dx + dy * dy
-
-          if (distSq < cursorConnectDistSq) {
-            const dist = Math.sqrt(distSq)
-            const strandAlpha =
-              (1 - dist / cursorConnectDist) * (isDark ? 0.38 : 0.28) * pointer.intensity
-
-            ctx.beginPath()
-            ctx.moveTo(pointer.x, pointer.y)
-            ctx.lineTo(nx, ny)
-
-            if (isDark) {
-              ctx.strokeStyle = `rgba(165, 180, 252, ${strandAlpha})`
-            } else {
-              ctx.strokeStyle = `rgba(99, 102, 241, ${strandAlpha})`
-            }
-            ctx.lineWidth = 0.75
-            ctx.stroke()
-          }
-        }
-      }
-
-      // 5. Render nodes (dots with subtle pulse and cursor glow highlight)
-      for (let i = 0; i < nodeCount; i++) {
-        const node = nodes[i]
-        const nx = node.x + node.dispX
-        const ny = node.y + node.dispY
-
-        // Breathing factor
-        const pulse = Math.sin(node.phase) * 0.2 + 0.8
-
-        // Proximity to cursor highlight
-        let proximityHighlight = 0
-        if (pointer.intensity > 0.01) {
-          const dx = nx - pointer.x
-          const dy = ny - pointer.y
-          const distSq = dx * dx + dy * dy
-          if (distSq < interactionRadiusSq) {
-            const dist = Math.sqrt(distSq)
-            proximityHighlight = (1 - dist / interactionRadius) * pointer.intensity
-          }
-        }
-
-        const currentRadius = node.radius * pulse * (1 + proximityHighlight * 0.4)
-
-        // Draw soft outer halo for nodes close to cursor
-        if (proximityHighlight > 0.15) {
+        // Highlight nearby particles with soft halo
+        if (proximityFactor > 0.25) {
           ctx.beginPath()
-          ctx.arc(nx, ny, currentRadius * 2.8, 0, Math.PI * 2)
-          if (isDark) {
-            ctx.fillStyle = `rgba(99, 102, 241, ${0.25 * proximityHighlight})`
-          } else {
-            ctx.fillStyle = `rgba(99, 102, 241, ${0.2 * proximityHighlight})`
-          }
+          ctx.arc(p.x, p.y, finalSize * 2.8, 0, Math.PI * 2)
+          ctx.fillStyle = `rgba(${p.color}, ${proximityFactor * 0.18})`
           ctx.fill()
         }
+      }
 
-        // Draw main node dot
-        ctx.beginPath()
-        ctx.arc(nx, ny, currentRadius, 0, Math.PI * 2)
+      // 3. Transient synaptic pulse lines near cursor wake (minimal and refined, not a cluttered web)
+      if (mouse.intensity > 0.05 && !prefersReducedMotion) {
+        const connectDist = isMobile ? 85 : 110
+        const connectDistSq = connectDist * connectDist
 
-        if (isDark) {
-          if (proximityHighlight > 0.2) {
-            ctx.fillStyle = `rgba(255, 255, 255, ${0.9 + proximityHighlight * 0.1})`
-          } else {
-            ctx.fillStyle = `rgba(226, 232, 240, ${0.45 * pulse})`
-          }
-        } else {
-          if (proximityHighlight > 0.2) {
-            ctx.fillStyle = `rgba(79, 70, 229, ${0.85 + proximityHighlight * 0.15})`
-          } else {
-            ctx.fillStyle = `rgba(71, 85, 105, ${0.4 * pulse})`
+        for (let i = 0; i < particleCount; i++) {
+          const p1 = particles[i]
+          const mdx1 = p1.x - mouse.x
+          const mdy1 = p1.y - mouse.y
+          const mDistSq1 = mdx1 * mdx1 + mdy1 * mdy1
+
+          // Only connect particles that are within the cursor's aura
+          if (mDistSq1 < mouseRadiusSq) {
+            for (let j = i + 1; j < particleCount; j++) {
+              const p2 = particles[j]
+              const dx = p2.x - p1.x
+              const dy = p2.y - p1.y
+              const distSq = dx * dx + dy * dy
+
+              if (distSq < connectDistSq) {
+                const dist = Math.sqrt(distSq)
+                const lineAlpha =
+                  (1 - dist / connectDist) *
+                  (1 - Math.sqrt(mDistSq1) / mouseRadius) *
+                  mouse.intensity *
+                  (isDark ? 0.35 : 0.25)
+
+                if (lineAlpha > 0.02) {
+                  ctx.beginPath()
+                  ctx.moveTo(p1.x, p1.y)
+                  ctx.lineTo(p2.x, p2.y)
+                  ctx.strokeStyle = `rgba(${palette.primary}, ${lineAlpha})`
+                  ctx.lineWidth = 0.65
+                  ctx.stroke()
+                }
+              }
+            }
           }
         }
-
-        ctx.fill()
       }
 
       animationFrameId = requestAnimationFrame(render)
@@ -433,26 +357,24 @@ export function InteractiveNetworkBackground() {
 
     animationFrameId = requestAnimationFrame(render)
 
-    // Cleanup on unmount
+    // Cleanup
     return () => {
       cancelAnimationFrame(animationFrameId)
       themeObserver.disconnect()
-      motionMediaQuery.removeEventListener("change", handleMotionChange)
+      motionQuery.removeEventListener("change", handleMotionChange)
       window.removeEventListener("resize", resizeCanvas)
-      window.removeEventListener("pointermove", handlePointerMove)
-      document.removeEventListener("mouseleave", handlePointerLeave)
-      window.removeEventListener("touchstart", handleTouchStart)
-      window.removeEventListener("touchmove", handleTouchMove)
-      window.removeEventListener("touchend", handleTouchEnd)
-      window.removeEventListener("touchcancel", handleTouchEnd)
-      document.removeEventListener("visibilitychange", handleVisibilityChange)
+      window.removeEventListener("pointermove", onPointerMove)
+      document.removeEventListener("mouseleave", onPointerLeave)
+      window.removeEventListener("touchmove", onTouchMove)
+      window.removeEventListener("touchend", onTouchEnd)
+      document.removeEventListener("visibilitychange", onVisibilityChange)
     }
   }, [])
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 user-select-none"
+      className="fixed inset-0 pointer-events-none z-0 select-none"
       aria-hidden="true"
     />
   )
