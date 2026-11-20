@@ -140,7 +140,7 @@ export function Skills() {
                                     <Globe2 className="w-3.5 h-3.5 text-purple-500" />
                                     <span>Languages</span>
                                 </div>
-                                <div className="text-xs font-semibold text-foreground">English, Tamil</div>
+                                <div className="text-sm font-semibold text-foreground">English, Tamil</div>
                                 <p className="text-[11px] text-muted-foreground mt-1">Malayalam (Conversational)</p>
                             </div>
                         </div>

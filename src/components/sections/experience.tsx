@@ -20,7 +20,7 @@ const fullTimeExperiences = [
             {
                 title: "Senior Software Engineer",
                 type: "Full-time",
-                period: "Jun 2022 - Present",
+                period: "Jun 2022 - Oct 2026",
                 duration: "4 yrs 5 mos",
                 location: "Technopark, Trivandrum · On-site",
                 points: [

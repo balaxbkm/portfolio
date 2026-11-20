@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Github, Linkedin, MessageCircle, ArrowRight, Sparkles, Terminal, ShieldCheck, ArrowDown, Code2, Cpu, CheckCircle2 } from "lucide-react"
+import { Github, Linkedin, MessageCircle, ArrowRight, Sparkles, Terminal, ShieldCheck, ArrowDown, Code2, CheckCircle2, Download } from "lucide-react"
 import { track } from "@vercel/analytics"
 
 export function Hero() {
@@ -75,12 +75,19 @@ export function Hero() {
                                     <div className="absolute bottom-3 left-3 right-3 p-3 rounded-2xl bg-black/40 backdrop-blur-md border border-white/10 text-white flex items-center justify-between">
                                         <div>
                                             <p className="text-xs font-bold leading-tight">Balakrishnan M</p>
-                                            <p className="text-[10px] text-zinc-300 font-mono">Senior SDE & Architect</p>
+                                            <p className="text-[10px] text-zinc-300 font-mono">Senior Software Engineer</p>
                                         </div>
-                                        <div className="flex items-center gap-1 text-[10px] font-mono font-semibold px-2 py-0.5 rounded-md bg-white/20">
-                                            <Cpu className="w-3 h-3 text-emerald-400" />
-                                            <span>AI Ready</span>
-                                        </div>
+                                        <a
+                                            href="/Resume_Balakrishnan_M.pdf"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            download="Resume_Balakrishnan_M.pdf"
+                                            onClick={() => track("resume_download", { location: "hero_card" })}
+                                            className="flex items-center gap-1.5 text-[11px] font-mono font-bold px-2.5 py-1 rounded-xl bg-white/20 hover:bg-white text-white hover:text-black border border-white/20 backdrop-blur-md transition-all duration-200 active:scale-95 group/btn shadow-xs"
+                                        >
+                                            <Download className="w-3 h-3 group-hover/btn:translate-y-0.5 transition-transform" />
+                                            <span>Resume</span>
+                                        </a>
                                     </div>
                                 </div>
 
