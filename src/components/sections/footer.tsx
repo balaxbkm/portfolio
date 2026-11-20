@@ -1,6 +1,6 @@
 "use client"
-import { ArrowUp } from "lucide-react"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
+import { ArrowUp, Heart, Sparkles } from "lucide-react"
 
 export function Footer() {
     const [time, setTime] = useState<string>("")
@@ -8,19 +8,20 @@ export function Footer() {
     useEffect(() => {
         const updateTime = () => {
             const now = new Date()
-            const dateStr = now.toLocaleDateString('en-US', {
-                day: 'numeric',
-                month: 'short',
-                year: 'numeric'
+            const dateStr = now.toLocaleDateString("en-US", {
+                day: "numeric",
+                month: "short",
+                year: "numeric"
             }).toUpperCase()
 
-            const timeStr = now.toLocaleTimeString('en-US', {
-                hour: '2-digit',
-                minute: '2-digit',
+            const timeStr = now.toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
                 hour12: true
             }).toUpperCase()
 
-            setTime(`${dateStr} | ${timeStr} IST`)
+            setTime(`${dateStr} · ${timeStr} IST`)
         }
 
         updateTime()
@@ -29,52 +30,71 @@ export function Footer() {
     }, [])
 
     const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        window.scrollTo({ top: 0, behavior: "smooth" })
     }
 
     return (
-        <footer className="pt-20 pb-8 bg-zinc-50 dark:bg-black border-t border-zinc-200 dark:border-white/5 relative overflow-hidden">
+        <footer className="pt-16 pb-10 bg-zinc-50 dark:bg-black/80 border-t border-zinc-200/80 dark:border-white/10 relative overflow-hidden">
             <div className="container mx-auto px-4 md:px-6 relative z-10">
-                <div className="flex flex-col md:flex-row justify-between items-center md:items-end gap-12 mb-16">
-                    <div className="space-y-4 text-center md:text-left">
-                        <p className="text-zinc-500 dark:text-white/40 text-xs uppercase tracking-[0.2em]">Designed & Built by</p>
-                        <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 tracking-tight">ansverse.xyz</h3>
+
+                {/* Top Row: Navigation Links & Scroll-to-Top */}
+                <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-zinc-200/80 dark:border-white/10">
+                    <div>
+                        <div className="flex items-center gap-2 mb-2">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                            <span className="text-xs font-mono font-semibold text-emerald-600 dark:text-emerald-400 tracking-wide uppercase">
+                                Open to Work
+                            </span>
+                        </div>
+                        <h3 className="text-xl font-black text-foreground tracking-tight">
+                            Balakrishnan M
+                        </h3>
+                        <p className="text-xs text-muted-foreground mt-0.5">
+                            Senior Full-Stack Software Engineer · <span className="font-semibold text-foreground">ansverse.xyz</span>
+                        </p>
                     </div>
 
-                    <div className="hidden md:flex gap-8">
-                        <button
-                            onClick={scrollToTop}
-                            className="group flex items-center gap-3 text-xs font-bold text-zinc-500 dark:text-white/60 hover:text-black dark:hover:text-white transition-colors uppercase tracking-widest"
-                        >
-                            Back to Top
-                            <div className="p-3 rounded-full border border-zinc-200 dark:border-white/10 group-hover:bg-zinc-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-all">
-                                <ArrowUp size={16} />
-                            </div>
-                        </button>
+                    {/* Nav Links */}
+                    <div className="flex flex-wrap items-center justify-center gap-6 text-xs font-medium text-muted-foreground">
+                        <a href="#about" className="hover:text-foreground transition-colors">About</a>
+                        <a href="#skills" className="hover:text-foreground transition-colors">Skills</a>
+                        <a href="#experience" className="hover:text-foreground transition-colors">Experience</a>
+                        <a href="#projects" className="hover:text-foreground transition-colors">Projects</a>
+                        <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
                     </div>
-                </div>
 
-                {/* Big Text */}
-                <div className="w-full border-t border-zinc-200 dark:border-white/10 pt-12 relative">
+                    {/* Back to top button */}
                     <button
                         onClick={scrollToTop}
-                        className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-0 md:hidden p-3 rounded-full border border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-black text-zinc-500 dark:text-white/60 hover:bg-zinc-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
                         aria-label="Back to top"
+                        className="group flex items-center gap-2.5 px-4 py-2 rounded-full glass border border-zinc-200/80 dark:border-white/10 text-xs font-semibold text-muted-foreground hover:text-foreground transition-all duration-300 hover:border-zinc-400 dark:hover:border-white/30"
                     >
-                        <ArrowUp size={16} />
+                        <span>Top</span>
+                        <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" />
                     </button>
-                    <h1 className="text-[15vw] leading-[0.8] font-black text-zinc-900/5 dark:text-white/5 text-left whitespace-nowrap select-none pointer-events-none tracking-tighter mix-blend-difference pl-4">
-                        ansverse.xyz
-                    </h1>
-                    <div className="flex flex-col md:flex-row justify-between items-center mt-8 text-[10px] text-zinc-400 dark:text-white/20 uppercase tracking-[0.2em] font-medium gap-4">
-                        <p>&copy; {new Date().getFullYear()} EDITION. ALL RIGHTS RESERVED.</p>
-                        <p className="text-zinc-400" suppressHydrationWarning>{time || "Loading..."}</p>
+                </div>
+
+                {/* Bottom Row: Timestamp, Copyright, Attribution */}
+                <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground font-mono">
+                    <p>
+                        &copy; {new Date().getFullYear()} Balakrishnan M · <span className="font-semibold text-foreground">ansverse</span>. All rights reserved.
+                    </p>
+
+                    <p className="text-zinc-500 dark:text-zinc-400 text-center" suppressHydrationWarning>
+                        {time || "Loading IST Clock..."}
+                    </p>
+
+                    <div className="flex items-center gap-1.5 text-zinc-500 dark:text-zinc-400">
+                        <span>Crafted with</span>
+                        <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline" />
+                        <span>&</span>
+                        <Sparkles className="w-3.5 h-3.5 text-amber-500 inline" />
+                        <span>by</span>
+                        <span className="font-bold text-foreground">ansverse</span>
                     </div>
                 </div>
-            </div>
 
-            {/* Background Gradient */}
-            <div className="absolute bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-white/[0.02] to-transparent pointer-events-none" />
+            </div>
         </footer>
     )
 }

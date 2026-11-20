@@ -3,7 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  /* Light Mode Variables (New) */
+  /* Light Mode Variables */
   --background: #ffffff;
   --foreground: #09090b;
 
@@ -36,7 +36,7 @@
 }
 
 .dark {
-  /* Dark Mode Variables (Original) */
+  /* Dark Mode Variables */
   --background: #050505;
   --foreground: #ffffff;
 
@@ -91,7 +91,7 @@
   --radius-lg: var(--radius);
 
   /* Animation Keyframes */
-  --animate-marquee: marquee 100s linear infinite;
+  --animate-marquee: marquee 60s linear infinite;
 
   @keyframes marquee {
     0% { transform: translateX(0); }
@@ -105,12 +105,18 @@ body {
   font-family: var(--font-geist-sans);
 }
 
-/* Enhanced Glassmorphism - Light Mode Support */
+/* Horizontal Gradient Mask for Marquees and Carousels */
+.mask-gradient-x {
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+}
+
+/* Enhanced Glassmorphism */
 .glass {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .dark .glass {
@@ -119,31 +125,31 @@ body {
 }
 
 .glass-strong {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
 }
 
 .dark .glass-strong {
-  background: rgba(20, 20, 20, 0.6);
+  background: rgba(20, 20, 20, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .glass-card {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 100%);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
 }
 
 .dark .glass-card {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
 }
 
 .text-glow {
